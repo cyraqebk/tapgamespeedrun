@@ -18,19 +18,13 @@ namespace UI.Tappings
 
         private void OnEnable()
         {
-            if (money != null)
-            {
-                money.Changed += OnMoneyChanged;
-                moneyText.text = money.Value.ToString(); 
-            }
+            money.Changed += OnMoneyChanged;
+            moneyText.text = money.Value.ToString(); 
         }
 
         private void OnDisable()
         {
-            if (money != null)
-            {
-                money.Changed -= OnMoneyChanged;
-            }
+            money.Changed -= OnMoneyChanged;
         }
 
         private void OnMoneyChanged(int oldValue, int newValue)
