@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using Core.ReactiveFields;
 using Core.Tappings;
 
 namespace UI.Tappings
@@ -8,29 +7,25 @@ namespace UI.Tappings
     public class AddingMoney : MonoBehaviour
     {
         [SerializeField] private TMP_Text moneyText;
-        private ReactiveField<int> money;
         [SerializeField] private AddMoney addMoney;
-
-        private void Awake()
-        {
-            money = addMoney.GetMoneyField();
-        }
 
         private void OnEnable()
         {
-            Debug.Log("Подписались");
-            money.Changed += OnMoneyChanged;
-            moneyText.text = money.Value.ToString(); 
+            // Подписываемся на событие изменения валюты через MoneyField
+            addMoney.MoneyField.Changed += OnMoneyChanged;
+            // Обновляем текст на экране
+            moneyText.text = addMoney.Money.ToString();
         }
 
         private void OnDisable()
         {
-            money.Changed -= OnMoneyChanged;
+            // Отписываемся от события изменения валюты
+            addMoney.MoneyField.Changed -= OnMoneyChanged;
         }
 
         private void OnMoneyChanged(int oldValue, int newValue)
         {
-            Debug.Log("Пишем");
+            // Обновляем текст при изменении валюты
             moneyText.text = newValue.ToString();
         }
     }

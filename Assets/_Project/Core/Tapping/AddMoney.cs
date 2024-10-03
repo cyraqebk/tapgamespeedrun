@@ -5,23 +5,18 @@ namespace Core.Tappings
 {
     public class AddMoney : MonoBehaviour
     {
-        [SerializeField] private ReactiveField<int> money;
+        // Инициализация ReactiveField<int> с начальным значением 0
+        [SerializeField] private ReactiveField<int> money = new ReactiveField<int>(0);
 
-        private void Awake()
+        // Геттер и сеттер для изменения количества валюты
+        public int Money
         {
-            money = new ReactiveField<int>(0);
-            Debug.Log("Инициализация money с значением 0.");
+            get => money.Value;
+            set => money.Value = value;
         }
 
-        public void AddMoneys(int amount)
-        {
-            Debug.Log($"Добавляем деньги: {amount}");
-            money.Value += amount;
-        }
-
-        public ReactiveField<int> GetMoneyField()
-        {
-            return money;
-        }
+        // Геттер для доступа к полю money, чтобы подписываться на его события
+        public ReactiveField<int> MoneyField => money;
     }
 }
+

@@ -4,13 +4,16 @@ using Core.Tappings;
 
 namespace UI.Tappings
 {
-        public class ButtonClickHandler : MonoBehaviour, IPointerClickHandler
+    public class ButtonClickHandler : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private Tapping tapping;
+        [SerializeField] private AddMoney addMoney;
+        [SerializeField] private int buttonValue;
+
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log(" Кликнул");
-            tapping.Tap();
+            // При клике изменяем значение через приватный сеттер внутри AddMoney
+            addMoney.Money += buttonValue;
         }
     }
 }
+
