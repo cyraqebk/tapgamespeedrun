@@ -8,6 +8,7 @@ namespace Core.Tappings
         [field: SerializeField] private int ButtonValue;
         public void Tap()
         {
+            Debug.Log("Перенёс");
             addMoney.AddMoneys(ButtonValue);
         }
     }
