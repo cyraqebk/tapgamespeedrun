@@ -205,7 +205,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 519420032}
-  - component: {fileID: 519420033}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
@@ -334,20 +333,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941213d63f53c6249938244bc3d8a7fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 0
-  moneyText: {fileID: 1758069064}
 --- !u!1 &665094659
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,9 +343,11 @@ GameObject:
   m_Component:
   - component: {fileID: 665094660}
   - component: {fileID: 665094663}
+  - component: {fileID: 665094666}
+  - component: {fileID: 665094665}
+  - component: {fileID: 665094664}
   - component: {fileID: 665094662}
   - component: {fileID: 665094661}
-  - component: {fileID: 665094664}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -487,9 +474,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 519420033}
+        - m_Target: {fileID: 665094665}
           m_TargetAssemblyTypeName: Core.Tappings.Tapping, Core.Tappings
-          m_MethodName: ButtonClick
+          m_MethodName: Tap
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -499,6 +486,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &665094665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665094659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45f13c5a2b1b874bbb84b419dc9b370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &665094666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665094659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6985286a95d15d46b2b3b13127a590a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money:
+    _value: 0
 --- !u!1 &891017445
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1758069063}
   - component: {fileID: 1758069065}
+  - component: {fileID: 1758069066}
   - component: {fileID: 1758069064}
   m_Layer: 5
   m_Name: Money
@@ -738,6 +752,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758069062}
   m_CullTransparentMesh: 1
+--- !u!114 &1758069066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758069062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e85b4a70e573d4e854fb552c6a56b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 1758069064}
+  money:
+    _value: 0
 --- !u!1 &1867955914
 GameObject:
   m_ObjectHideFlags: 0
