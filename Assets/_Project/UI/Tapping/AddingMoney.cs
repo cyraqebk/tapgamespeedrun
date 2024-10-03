@@ -18,6 +18,7 @@ namespace UI.Tappings
 
         private void OnEnable()
         {
+            Debug.Log("Подписались");
             money.Changed += OnMoneyChanged;
             moneyText.text = money.Value.ToString(); 
         }
@@ -29,6 +30,7 @@ namespace UI.Tappings
 
         private void OnMoneyChanged(int oldValue, int newValue)
         {
+            Debug.Log("Пишем");
             moneyText.text = newValue.ToString();
         }
     }

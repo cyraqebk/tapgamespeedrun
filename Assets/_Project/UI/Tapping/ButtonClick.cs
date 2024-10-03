@@ -9,6 +9,7 @@ namespace UI.Tappings
         [SerializeField] private Tapping tapping;
         public void OnPointerClick(PointerEventData eventData)
         {
+            Debug.Log(" Кликнул");
             tapping.Tap();
         }
     }
