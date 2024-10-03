@@ -898,8 +898,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1885839149}
-  - component: {fileID: 1885839151}
   - component: {fileID: 1885839150}
+  - component: {fileID: 1885839151}
   m_Layer: 5
   m_Name: BoxScripts
   m_TagString: Untagged
