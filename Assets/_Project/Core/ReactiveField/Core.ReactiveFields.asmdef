@@ -1,9 +1,7 @@
 {
-    "name": "Core.Tappings",
-    "rootNamespace": "Core.Tappings",
-    "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
-    ],
+    "name": "Core.ReactiveFields",
+    "rootNamespace": "Core.ReactiveFields",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
