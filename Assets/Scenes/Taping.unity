@@ -343,6 +343,8 @@ GameObject:
   m_Component:
   - component: {fileID: 665094660}
   - component: {fileID: 665094663}
+
+
   - component: {fileID: 665094665}
   - component: {fileID: 665094664}
   - component: {fileID: 665094662}
@@ -474,6 +476,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+
           m_TargetAssemblyTypeName: Core.Tappings.Tapping, Core.Tappings
           m_MethodName: Tap
           m_Mode: 1

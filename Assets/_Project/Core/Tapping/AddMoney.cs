@@ -1,4 +1,5 @@
 using UnityEngine;
+
 using Core.ReactiveFields;
 
 namespace Core.Tappings
@@ -6,6 +7,7 @@ namespace Core.Tappings
     public class AddMoney : MonoBehaviour
     {
         [SerializeField] private ReactiveField<int> money;
+
 
         private void Awake()
         {

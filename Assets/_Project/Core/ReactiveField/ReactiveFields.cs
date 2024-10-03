@@ -30,6 +30,7 @@
                     T oldValue = _value;
                     _value = value;
                     Debug.Log("Ищем подписчиков");
+
                     Changed?.Invoke(oldValue, _value);
                 }
             }

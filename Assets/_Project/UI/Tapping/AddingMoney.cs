@@ -21,17 +21,20 @@ namespace UI.Tappings
             Debug.Log("Подписались");
             money.Changed += OnMoneyChanged;
             moneyText.text = money.Value.ToString(); 
+
         }
 
         private void OnDisable()
         {
+
             money.Changed -= OnMoneyChanged;
         }
 
         private void OnMoneyChanged(int oldValue, int newValue)
         {
+
             Debug.Log("Пишем");
-            moneyText.text = newValue.ToString();
+
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Core.Tappings
         public void Tap()
         {
             Debug.Log("Перенёс");
-            addMoney.AddMoneys(ButtonValue);
         }
     }
 }
