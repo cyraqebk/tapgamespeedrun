@@ -4,7 +4,7 @@ using Core.Tappings;
 
 namespace UI.Tappings
 {
-    public class AddingMoney : MonoBehaviour
+    public class MoneyDisplay : MonoBehaviour
     {
         [SerializeField] private TMP_Text moneyText;
         [SerializeField] private SoftCurrency softCurrency;
