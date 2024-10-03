@@ -2,8 +2,7 @@
     "name": "Core.Tappings",
     "rootNamespace": "Core.Tappings",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:12d46af840e134e429642ca64f81e8a3"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

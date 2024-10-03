@@ -1,14 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 
 namespace Core.Tappings
 {
     public class Tapping : MonoBehaviour
     {
-        [SerializeField] private AddMoney addMoney;
-        [field: SerializeField] private int ButtonValue;
-        public void Tap()
+        [SerializeField] int money;
+        public TMP_Text moneyText;
+        public void ButtonClick()
         {
-            addMoney.AddMoneys(ButtonValue);
+            money++;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            moneyText.text = money.ToString();
         }
     }
 }
