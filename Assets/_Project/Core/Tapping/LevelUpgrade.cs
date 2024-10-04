@@ -1,25 +1,37 @@
 using UnityEngine;
+using Core.ReactiveFields;
 
 namespace Core.Tappings
 {
     public class LevelUpgrade : MonoBehaviour
     {
-        public AnimationCurve priiceCurve;
-        public int MaxLevel = 10;
-        private int _currenLevel = 1;
+        [SerializeField] private AnimationCurve priiceCurve;
+        [SerializeField] private int MaxLevel = 50;
+        [SerializeField] private ReactiveField<string> levelText = new ReactiveField<string>("");
+        public string levelTextAmount
+        {
+            get => levelText.Value;
+            set => levelText.Value = value;
+        }
+        public ReactiveField<string> levelField => levelText;
+        public int MaxLevelProperty
+        {
+            get => MaxLevel;
+        }
         public int GetUpgradeCost(int Level)
         {
-            float normalizedLevel = (float)Level / (float)MaxLevel;
-            float price = priiceCurve.Evaluate(normalizedLevel) * 1000;
+            float normalizedLevel = (float)Level;
+            float price = priiceCurve.Evaluate(normalizedLevel);
+            Debug.Log(Mathf.CeilToInt(price));
             return Mathf.CeilToInt(price);
         }
-        public void UpgradeLevel()
+        public void UpgradeLevel(ref int currenLevel)
         {
-            if (_currenLevel < MaxLevel)
+            if (currenLevel < MaxLevel)
             {
-                int UpgradeCost = GetUpgradeCost(_currenLevel);
-                Debug.Log("Стоимость апгрейда уровня " + _currenLevel + ": " + UpgradeCost + " Монет");
-                _currenLevel++;
+                int UpgradeCost = GetUpgradeCost(currenLevel);
+                Debug.Log("Стоимость апгрейда уровня " + currenLevel + ": " + UpgradeCost + " Монет");
+                currenLevel++;
             }
             else
             {
