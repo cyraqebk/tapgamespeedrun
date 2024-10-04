@@ -7,8 +7,8 @@ namespace UI.Tappings
     public class ButtonClickHandler : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private SoftCurrency softCurrency;
-        [SerializeField] private int currencyIncrement=1;
-        public int NumberAdd
+        private int currencyIncrement = 1;
+        public int currencyIncrementProperty
         {
             get => currencyIncrement;
             set => currencyIncrement = value;
