@@ -1,0 +1,16 @@
+{
+    "name": "Core.Wallet",
+    "rootNamespace": "Core.Wallet",
+    "references": [
+        "GUID:12d46af840e134e429642ca64f81e8a3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Core.Tappings;
-using System;
 
 namespace UI.Tappings
 {
