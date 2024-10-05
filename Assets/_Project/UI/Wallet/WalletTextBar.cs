@@ -10,6 +10,10 @@ namespace UI.Wallet
     {
         [SerializeField] private WalletAmount walletAmount;
         [SerializeField] private TMP_Text TextBar;
+        [SerializeField] private ImprovingBarWallet improvingBarWallet;
+        [SerializeField] private int capacity;
+
+        
         private void OnEnable()
         {
             walletAmount.WalletField.Changed += SetFillAmount;
@@ -22,7 +26,8 @@ namespace UI.Wallet
         }
         public void SetFillAmount(float oldValue, float newValue)
         {
-            TextBar.text=Mathf.FloorToInt(walletAmount.WalletAmountProperty).ToString();
+            capacity=improvingBarWallet.GettingCapacityWeapon(improvingBarWallet.levelWeaponProperty-1);
+            TextBar.text=Mathf.FloorToInt(walletAmount.WalletAmountProperty).ToString()+" / "+capacity;
         }
     }
 }

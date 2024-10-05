@@ -1,6 +1,7 @@
 using UnityEngine;
 using Core.ReactiveFields;
 using Core.Tappings;
+using System;
 
 namespace Core.Wallet
 {
@@ -11,6 +12,11 @@ namespace Core.Wallet
         [SerializeField] private AnimationCurve CapacityWeapon;
         [SerializeField] private AnimationCurve PriceWeapon;
         [SerializeField] private int levelWeapon = 1;  
+        public int levelWeaponProperty
+        {
+            get=>levelWeapon;
+            set=>levelWeapon = value;
+        }
         [SerializeField] private PassiveIncome passiveIncome;
         [SerializeField] private int MaxLevelWeapon = 100;
         private string Text1;
@@ -23,20 +29,24 @@ namespace Core.Wallet
         }
         public ReactiveField<string> WeaponLevelTextField => WeaponLevelText;
         public void Awake()
+        { 
+            LevelTexts();
+        }
+        public string LevelTexts()
         {
-            WeaponLevelTextProperty=Text1 + Text2;  
-            Text1 = "Стоимость улучшения: " + GettingPriceWeapon(levelWeapon) + "увеличение скорости: " + GettingMiningSpeedWeapon(levelWeapon);
-            Text2 = "увеличение объёма: "+ GettingCapacityWeapon(levelWeapon) + "текущий уровень: " + levelWeapon;
-
+            Text1 = "Стоимость улучшения: " + GettingPriceWeapon(levelWeapon) + "     увеличение скорости на " + Mathf.FloorToInt(((GettingMiningSpeedWeapon(levelWeapon) - GettingMiningSpeedWeapon(levelWeapon-1))/GettingMiningSpeedWeapon(levelWeapon-1)*100));
+            Text2 = "%     увеличение объёма: "+ GettingCapacityWeapon(levelWeapon) + "     текущий уровень: " + levelWeapon;
+            WeaponLevelTextProperty=Text1 + Text2;
+            return WeaponLevelTextProperty;
         }
         public int GettingPriceWeapon(int level)
         {
-            float price = CapacityWeapon.Evaluate(level+1);
+            float price = PriceWeapon.Evaluate(level+1);
             return Mathf.CeilToInt(price);
         }
         public float GettingMiningSpeedWeapon(int level)
         {
-            float speed = CapacityWeapon.Evaluate(level+1);
+            float speed = MiningSpeedWeapon.Evaluate(level+1);
             return speed;
         }
         public int GettingCapacityWeapon(int level)
@@ -46,18 +56,14 @@ namespace Core.Wallet
         }
         public void UpgradeLevel()
         {
-            if (levelWeapon < MaxLevelWeapon &&  GettingPriceWeapon(levelWeapon) < softCurrency.CurrentAmount)
+            if (levelWeapon < MaxLevelWeapon &&  GettingPriceWeapon(levelWeapon) <= softCurrency.CurrentAmount)
             {
                 softCurrency.CurrentAmount -= GettingPriceWeapon(levelWeapon);
                 passiveIncome.MaximumValueWalletProperty = GettingCapacityWeapon(levelWeapon);
                 passiveIncome.MiningSpeedProperty = GettingMiningSpeedWeapon(levelWeapon);
-                levelWeapon++;
-                WeaponLevelTextProperty=Text1 + Text2;  
-                Text1 = "Стоимость улучшения: " + GettingPriceWeapon(levelWeapon) + "увеличение скорости: " + GettingMiningSpeedWeapon(levelWeapon);
-                Text2 = "увеличение объёма: "+ GettingCapacityWeapon(levelWeapon) + "текущий уровень: " + levelWeapon;
+                levelWeapon++;  
+                LevelTexts();
             }
         }
-
-
     }
 }

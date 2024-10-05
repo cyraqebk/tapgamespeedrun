@@ -595,8 +595,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: 154}
-  m_SizeDelta: {x: 674.93, y: 191.4}
+  m_AnchoredPosition: {x: -2.8574, y: 109.2856}
+  m_SizeDelta: {x: 669.2153, y: 280.8288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624981097
 MonoBehaviour:
@@ -717,7 +717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.8874, y: -126.2}
+  m_AnchoredPosition: {x: 7.8874, y: -188}
   m_SizeDelta: {x: 283.3082, y: 252.3943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746712495
@@ -826,6 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 786520326}
+  - component: {fileID: 786520329}
   - component: {fileID: 786520328}
   - component: {fileID: 786520327}
   m_Layer: 5
@@ -901,8 +902,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -953,6 +954,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786520325}
   m_CullTransparentMesh: 1
+--- !u!114 &786520329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786520325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e8e007d7fc5948be80d9894164e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  improvingBarWallet: {fileID: 1885839153}
+  WeaponLevel: {fileID: 786520327}
 --- !u!1 &891017445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaximumValueWallet: 1000
-  MiningSpeed: 123
+  MiningSpeed: 1
   walletAmount: {fileID: 1885839150}
 --- !u!114 &1885839152
 MonoBehaviour:
@@ -1518,7 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f030823000626d84eb20055d94541df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  softCurrency: {fileID: 0}
+  softCurrency: {fileID: 1885839152}
   MiningSpeedWeapon:
     serializedVersion: 2
     m_Curve:
@@ -1601,7 +1616,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   levelWeapon: 1
-  passiveIncome: {fileID: 0}
+  passiveIncome: {fileID: 1885839151}
   MaxLevelWeapon: 100
   WeaponLevelText:
     _value: 

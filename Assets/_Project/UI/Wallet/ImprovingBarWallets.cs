@@ -10,11 +10,14 @@ namespace UI.Wallet
     {
         [SerializeField] private ImprovingBarWallet improvingBarWallet;
         [SerializeField] private TMP_Text WeaponLevel;
+        [SerializeField] private TMP_Text UrText;
+
 
         private void OnEnable()
         {
             improvingBarWallet.WeaponLevelTextField.Changed += OnWeaponTextChanged;
-            WeaponLevel.text = improvingBarWallet.WeaponLevelTextProperty.ToString();
+            WeaponLevel.text = improvingBarWallet.WeaponLevelTextProperty;
+            UrText.text="Текущий уровень: " + improvingBarWallet.levelWeaponProperty + "    Скорость: " + Mathf.Round((improvingBarWallet.GettingMiningSpeedWeapon(improvingBarWallet.levelWeaponProperty-1)) * 10f) / 10f;
         }
 
         private void OnDisable()
@@ -24,11 +27,12 @@ namespace UI.Wallet
 
         private void OnWeaponTextChanged(string oldValue, string newValue)
         {
-            // moneyText.text = newValue.ToString();
+            WeaponLevel.text=improvingBarWallet.WeaponLevelTextProperty;
+            UrText.text="Текущий уровень: " + improvingBarWallet.levelWeaponProperty + "    Скорость: " + Mathf.Round((improvingBarWallet.GettingMiningSpeedWeapon(improvingBarWallet.levelWeaponProperty-1)) * 10f) / 10f;
         }
         public void OnPointerClick(PointerEventData eventData)
         {
-            
+            improvingBarWallet.UpgradeLevel();
         }
     }
 }
