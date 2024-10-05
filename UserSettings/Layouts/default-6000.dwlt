@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -535,7 +535,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f827ffff
+      m_ExpandedIDs: 5026ffff1c28ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1139,9 +1139,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 331.7898, y: 640.66766, z: -0.73813903}
+    m_Target: {x: 417.93814, y: 701.0309, z: 1.658181}
     speed: 2
-    m_Value: {x: 331.7898, y: 640.66766, z: -0.73813903}
+    m_Value: {x: 417.93814, y: 701.0309, z: 1.658181}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1191,9 +1191,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 702.7623
+    m_Target: 463.1348
     speed: 2
-    m_Value: 702.7623
+    m_Value: 463.1348
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1271,7 +1271,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Packages
+    - Assets/_Project/UI/Wallet
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1281,16 +1281,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Packages
+  - Assets/_Project/UI/Wallet
   m_LastFoldersGridSize: 96
   m_LastProjectPath: B:\ProgectPlay\klicker\tapgamespeedrun
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: ffffff7f
-    m_LastClickedID: 2147483647
-    m_ExpandedIDs: 000000004cb000004eb0000050b0000052b0000054b0000056b0000058b000005ab000005cb000005eb0000060b0000062b0000064b0000066b00000
+    m_SelectedIDs: 800d0100
+    m_LastClickedID: 68992
+    m_ExpandedIDs: 0000000044e90000b8e90000d8e90000f2ee000058f00000f0f50000e8fe0000e40201008e080100a00c0100a20c0100a40c0100a60c0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1319,7 +1319,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004cb000004eb0000050b0000052b0000054b0000056b0000058b000005ab000005cb000005eb0000060b0000062b0000064b0000066b00000
+    m_ExpandedIDs: 0000000044e90000b8e90000d8e90000f2ee000058f00000f0f50000e8fe0000e40201008e080100a00c0100a20c0100a40c0100a60c0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
