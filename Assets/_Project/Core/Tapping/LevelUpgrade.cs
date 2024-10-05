@@ -22,7 +22,6 @@ namespace Core.Tappings
         {
             float normalizedLevel = (float)Level;
             float price = priiceCurve.Evaluate(normalizedLevel);
-            Debug.Log(Mathf.CeilToInt(price));
             return Mathf.CeilToInt(price);
         }
         public void UpgradeLevel(ref int currenLevel)
@@ -30,13 +29,8 @@ namespace Core.Tappings
             if (currenLevel < MaxLevel)
             {
                 int UpgradeCost = GetUpgradeCost(currenLevel);
-                Debug.Log("Стоимость апгрейда уровня " + currenLevel + ": " + UpgradeCost + " Монет");
                 currenLevel++;
-            }
-            else
-            {
-                Debug.Log("Максимальный уровень достигнут!!!");
-            }
+            } 
         }
     }
 }

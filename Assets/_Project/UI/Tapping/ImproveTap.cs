@@ -22,7 +22,7 @@ namespace UI.Tappings
                 float buff = buffCurve.Evaluate(currenLevel);
                 softCurrency.CurrentAmount -=levelUpgrade.GetUpgradeCost(currenLevel);
                 levelUpgrade.UpgradeLevel(ref currenLevel);
-                buttonClickHandler.currencyIncrementProperty += Mathf.CeilToInt(buff);
+                buttonClickHandler.currencyIncrementProperty = Mathf.CeilToInt(buff);
                 levelUpgrade.levelTextAmount = "Цена за улучшение " + levelUpgrade.GetUpgradeCost(currenLevel) + "   уровень: " + currenLevel;
 
             }

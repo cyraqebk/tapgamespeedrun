@@ -13,7 +13,7 @@ namespace UI.Wallet
         private void OnEnable()
         {
             walletAmount.WalletField.Changed += SetFillAmount;
-            TextBar.text=walletAmount.WalletAmountProperty.ToString();
+            TextBar.text=Mathf.FloorToInt(walletAmount.WalletAmountProperty).ToString();
         }
 
         private void OnDisable()
@@ -22,7 +22,7 @@ namespace UI.Wallet
         }
         public void SetFillAmount(float oldValue, float newValue)
         {
-            TextBar.text=walletAmount.WalletAmountProperty.ToString();
+            TextBar.text=Mathf.FloorToInt(walletAmount.WalletAmountProperty).ToString();
         }
     }
 }
