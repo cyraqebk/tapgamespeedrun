@@ -535,7 +535,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5026ffff1c28ffff
+      m_ExpandedIDs: e2fafffff8ad000012ae0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1139,9 +1139,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 417.93814, y: 701.0309, z: 1.658181}
+    m_Target: {x: 222.57758, y: 608.2954, z: -0.80147725}
     speed: 2
-    m_Value: {x: 417.93814, y: 701.0309, z: 1.658181}
+    m_Value: {x: 222.57758, y: 608.2954, z: -0.80147725}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1191,9 +1191,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 463.1348
+    m_Target: 709.1009
     speed: 2
-    m_Value: 463.1348
+    m_Value: 709.1009
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1271,7 +1271,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Project/UI/Wallet
+    - Assets/Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1281,16 +1281,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/_Project/UI/Wallet
+  - Assets/Scenes
   m_LastFoldersGridSize: 96
   m_LastProjectPath: B:\ProgectPlay\klicker\tapgamespeedrun
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 800d0100
-    m_LastClickedID: 68992
-    m_ExpandedIDs: 0000000044e90000b8e90000d8e90000f2ee000058f00000f0f50000e8fe0000e40201008e080100a00c0100a20c0100a40c0100a60c0100
+    scrollPos: {x: 0, y: 113.20001}
+    m_SelectedIDs: cab00000
+    m_LastClickedID: 45258
+    m_ExpandedIDs: 000000004eb0000050b0000052b0000054b0000056b0000058b000005ab000005cb000005eb0000060b0000062b0000064b0000066b00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1319,7 +1319,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000044e90000b8e90000d8e90000f2ee000058f00000f0f50000e8fe0000e40201008e080100a00c0100a20c0100a40c0100a60c0100
+    m_ExpandedIDs: 000000004eb0000050b0000052b0000054b0000056b0000058b000005ab000005cb000005eb0000060b0000062b0000064b0000066b00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

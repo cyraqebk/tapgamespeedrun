@@ -559,6 +559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walletAmount: {fileID: 1885839150}
   TextBar: {fileID: 581071735}
+  improvingBarWallet: {fileID: 1885839153}
+  capacity: 0
 --- !u!1 &624981095
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624981096}
+  - component: {fileID: 624981100}
   - component: {fileID: 624981099}
   - component: {fileID: 624981098}
   - component: {fileID: 624981097}
@@ -680,6 +683,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624981095}
   m_CullTransparentMesh: 1
+--- !u!114 &624981100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624981095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e8e007d7fc5948be80d9894164e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  improvingBarWallet: {fileID: 1885839153}
+  WeaponLevel: {fileID: 786520327}
+  UrText: {fileID: 1891594926}
 --- !u!1 &746712493
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +844,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 786520326}
-  - component: {fileID: 786520329}
   - component: {fileID: 786520328}
   - component: {fileID: 786520327}
   m_Layer: 5
@@ -954,20 +971,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786520325}
   m_CullTransparentMesh: 1
---- !u!114 &786520329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786520325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e6e8e007d7fc5948be80d9894164e25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  improvingBarWallet: {fileID: 1885839153}
-  WeaponLevel: {fileID: 786520327}
 --- !u!1 &891017445
 GameObject:
   m_ObjectHideFlags: 0
