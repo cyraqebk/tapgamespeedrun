@@ -1249,6 +1249,7 @@ MonoBehaviour:
   softCurrency: {fileID: 1885839152}
   walletAmount: {fileID: 1885839150}
   levelUpgrade: {fileID: 1885839154}
+  passiveIncome: {fileID: 1885839151}
 --- !u!114 &1550806010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,6 +1266,7 @@ MonoBehaviour:
   softCurrency: {fileID: 1885839152}
   walletAmount: {fileID: 1885839150}
   levelUpgrade: {fileID: 1885839154}
+  passiveIncome: {fileID: 1885839151}
 --- !u!4 &1550806011
 Transform:
   m_ObjectHideFlags: 0
