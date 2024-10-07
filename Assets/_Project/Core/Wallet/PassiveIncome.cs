@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 
 namespace Core.Wallet
@@ -19,7 +20,7 @@ namespace Core.Wallet
             get=>MiningSpeed;
             set=>MiningSpeed = value;
         }
-        void Start()
+        public void Start()
         {
             StartCoroutine(RepeatEverySecond());
         }

@@ -7,6 +7,12 @@ namespace Core.Tappings
     {
         [SerializeField] private AnimationCurve priiceCurve;
         [SerializeField] private int MaxLevel = 50;
+        [SerializeField] private int currenLevel;
+        public int currenLevelProperty
+        {
+            get=>currenLevel;
+            set=>currenLevel=value;
+        }
         [SerializeField] private ReactiveField<string> levelText = new ReactiveField<string>("");
         public string levelTextAmount
         {
@@ -18,17 +24,17 @@ namespace Core.Tappings
         {
             get => MaxLevel;
         }
-        public int GetUpgradeCost(int Level)
+        public int GetUpgradeCost()
         {
-            float normalizedLevel = (float)Level;
+            float normalizedLevel = (float)currenLevel;
             float price = priiceCurve.Evaluate(normalizedLevel);
             return Mathf.CeilToInt(price);
         }
-        public void UpgradeLevel(ref int currenLevel)
+        public void UpgradeLevel()
         {
             if (currenLevel < MaxLevel)
             {
-                int UpgradeCost = GetUpgradeCost(currenLevel);
+                int UpgradeCost = GetUpgradeCost();
                 currenLevel++;
             } 
         }
