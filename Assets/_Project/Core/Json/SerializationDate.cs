@@ -2,7 +2,7 @@ using UnityEngine;
 using Core.Tappings;
 using Core.Wallet;
 using UI.Tappings;
-
+using System;
 namespace Core.Json
 {
     public class SerializationDate : MonoBehaviour
@@ -18,6 +18,7 @@ namespace Core.Json
         public int CurrentLevel => levelUpgrade.currenLevelProperty;
         public int MaximumValueWallet => passiveIncome.MaximumValueWalletProperty;
         public float MiningSpeed => passiveIncome.MiningSpeedProperty;
+        public DateTime CurrentDateTime = DateTime.Now;
         public SaveData GetData()
         {
             return new SaveData
@@ -27,7 +28,8 @@ namespace Core.Json
                 walletCurrency = WalletCurrency,
                 currenLevel = CurrentLevel,
                 maximumValueWallet = MaximumValueWallet,
-                miningSpeed = MiningSpeed
+                miningSpeed = MiningSpeed,
+                currentDateTime = CurrentDateTime
             };
         }
     }
@@ -41,6 +43,7 @@ namespace Core.Json
         public int currenLevel;
         public int maximumValueWallet;
         public float miningSpeed;
+        public DateTime currentDateTime;
     }
 }
 
