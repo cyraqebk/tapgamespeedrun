@@ -11,7 +11,7 @@ namespace Core.Wallet
         [SerializeField] private AnimationCurve MiningSpeedWeapon;
         [SerializeField] private AnimationCurve CapacityWeapon;
         [SerializeField] private AnimationCurve PriceWeapon;
-        [SerializeField] private int levelWeapon = 1;  
+        [SerializeField] private int levelWeapon;  
         public int levelWeaponProperty
         {
             get=>levelWeapon;
@@ -28,7 +28,7 @@ namespace Core.Wallet
             set=>WeaponLevelText.Value = value;
         }
         public ReactiveField<string> WeaponLevelTextField => WeaponLevelText;
-        public void Awake()
+        public void Start()
         { 
             LevelTexts();
         }

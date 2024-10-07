@@ -1,0 +1,18 @@
+{
+    "name": "Core.Json",
+    "rootNamespace": "Core.Json",
+    "references": [
+        "GUID:98c731fdc013dd14480c118cac15ca6c",
+        "GUID:4fb5fbb55ac6f7f44b70152176503c61",
+        "GUID:2ec83813fe8f9164ab7aee5228b887da"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

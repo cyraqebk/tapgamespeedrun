@@ -19,7 +19,7 @@ namespace Core.Wallet
             get=>MiningSpeed;
             set=>MiningSpeed = value;
         }
-        void Start()
+        public void Start()
         {
             StartCoroutine(RepeatEverySecond());
         }
