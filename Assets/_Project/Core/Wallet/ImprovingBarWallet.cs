@@ -2,6 +2,10 @@ using UnityEngine;
 using Core.ReactiveFields;
 using Core.Tappings;
 using System;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
+using TMPro;
 
 namespace Core.Wallet
 {
@@ -19,8 +23,7 @@ namespace Core.Wallet
         }
         [SerializeField] private PassiveIncome passiveIncome;
         [SerializeField] private int MaxLevelWeapon = 100;
-        private string Text1;
-        private string Text2;
+        [SerializeField] private TMP_Text localizedText;
         [SerializeField] private ReactiveField<string> WeaponLevelText = new ReactiveField<string>("");
         public string WeaponLevelTextProperty
         {
@@ -32,12 +35,14 @@ namespace Core.Wallet
         { 
             LevelTexts();
         }
-        public string LevelTexts()
+        public void LevelTexts()
         {
-            Text1 = "Стоимость улучшения: " + GettingPriceWeapon(levelWeapon) + "     увеличение скорости на " + Mathf.FloorToInt(((GettingMiningSpeedWeapon(levelWeapon) - GettingMiningSpeedWeapon(levelWeapon-1))/GettingMiningSpeedWeapon(levelWeapon-1)*100));
-            Text2 = "%     увеличение объёма: "+ GettingCapacityWeapon(levelWeapon) + "     текущий уровень: " + levelWeapon;
-            WeaponLevelTextProperty=Text1 + Text2;
-            return WeaponLevelTextProperty;
+            var localizedString = new LocalizedString("string", "WeaponImImprovement");
+            localizedString.Arguments = new object[] {(GettingPriceWeapon(levelWeapon)), (Mathf.FloorToInt(((GettingMiningSpeedWeapon(levelWeapon) - GettingMiningSpeedWeapon(levelWeapon-1))/GettingMiningSpeedWeapon(levelWeapon-1)*100))), (GettingCapacityWeapon(levelWeapon))};
+            localizedString.StringChanged += (localizedValue) =>
+            {
+                localizedText.text = localizedValue;
+            };
         }
         public int GettingPriceWeapon(int level)
         {
