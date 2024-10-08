@@ -27,6 +27,18 @@ MonoBehaviour:
     m_Key: WeaponUP
     m_Metadata:
       m_Items: []
+  - m_Id: 261766383296512
+    m_Key: Mining
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265571183255552
+    m_Key: Wallet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265828407336960
+    m_Key: Tapping
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

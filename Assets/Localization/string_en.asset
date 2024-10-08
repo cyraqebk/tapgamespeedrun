@@ -35,6 +35,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4466562747786854643
+  - m_Id: 261766383296512
+    m_Localized: mining
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265571183255552
+    m_Localized: wallet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265828407336960
+    m_Localized: tapping
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
