@@ -1,6 +1,6 @@
 {
-    "name": "Core.Json",
-    "rootNamespace": "Core.Json",
+    "name": "Core.Management",
+    "rootNamespace": "Core.Management",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

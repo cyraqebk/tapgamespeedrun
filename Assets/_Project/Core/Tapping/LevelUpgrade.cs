@@ -1,5 +1,6 @@
 using UnityEngine;
 using Core.ReactiveFields;
+using Core.Json;
 
 namespace Core.Tappings
 {
@@ -7,7 +8,7 @@ namespace Core.Tappings
     {
         [SerializeField] private AnimationCurve priiceCurve;
         [SerializeField] private int MaxLevel = 50;
-        [SerializeField] private int currenLevel;
+        [SerializeField] private int currenLevel = 1;
         public int currenLevelProperty
         {
             get=>currenLevel;
@@ -36,6 +37,7 @@ namespace Core.Tappings
             {
                 int UpgradeCost = GetUpgradeCost();
                 currenLevel++;
+                new Save("currenLevel", currenLevel);
             } 
         }
     }
