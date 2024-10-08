@@ -15,7 +15,9 @@ namespace Core.Wallet
         [SerializeField] private AnimationCurve MiningSpeedWeapon;
         [SerializeField] private AnimationCurve CapacityWeapon;
         [SerializeField] private AnimationCurve PriceWeapon;
-        [SerializeField] private int levelWeapon;  
+        public delegate void ChangedWallet();
+        public event ChangedWallet Changed;
+        [SerializeField] private int levelWeapon = 1;  
         public int levelWeaponProperty
         {
             get=>levelWeapon;
@@ -35,14 +37,10 @@ namespace Core.Wallet
         public void Awake()
         { 
             ImprovementButtonText();
-            CurrentTextLevel();
         }
         public void ImprovementButtonText()
         {
-            
-        }
-        public void CurrentTextLevel()
-        {
+            var localizedString = new LocalizedString("string", "WeaponImImprovement");
             
         }
         public int GettingPriceWeapon(int level)
@@ -68,8 +66,8 @@ namespace Core.Wallet
                 passiveIncome.MaximumValueWalletProperty = GettingCapacityWeapon(levelWeapon);
                 passiveIncome.MiningSpeedProperty = GettingMiningSpeedWeapon(levelWeapon);
                 levelWeapon++;  
+                Changed?.Invoke();
                 ImprovementButtonText();
-                CurrentTextLevel();
             }
         }
     }

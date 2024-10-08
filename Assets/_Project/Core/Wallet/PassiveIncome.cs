@@ -30,6 +30,7 @@ namespace Core.Wallet
             {
                 if (walletAmount.WalletAmountProperty + MiningSpeed < MaximumValueWallet)
                 {
+                    Debug.Log("evry second");
                     walletAmount.WalletAmountProperty += MiningSpeed;
                 }
                 else

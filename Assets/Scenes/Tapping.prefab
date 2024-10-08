@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 110268870534102584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5270193037438796928}
@@ -44,7 +44,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2246302842774897515
 Canvas:
   m_ObjectHideFlags: 0
@@ -117,7 +117,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6121818033416075643}
-  - component: {fileID: 3102641658649333215}
   - component: {fileID: 1521834545899607053}
   m_Layer: 5
   m_Name: BoxScripts
@@ -145,21 +144,6 @@ RectTransform:
   m_AnchoredPosition: {x: -360, y: -640}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3102641658649333215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600619989232107487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6985286a95d15d46b2b3b13127a590a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameInitializer: {fileID: 8600271384295758215}
-  currentCurrency:
-    _value: 0
 --- !u!114 &1521834545899607053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +273,6 @@ GameObject:
   - component: {fileID: 5270193037438796928}
   - component: {fileID: 3704987147317020499}
   - component: {fileID: 8046967185717737908}
-  - component: {fileID: 3058218841676935511}
   - component: {fileID: 6681368332675140771}
   - component: {fileID: 5707942487857785355}
   m_Layer: 5
@@ -339,37 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee70c65d20bc90346a8f7a6ad94f941c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  softCurrency: {fileID: 3102641658649333215}
+  softCurrency: {fileID: 0}
   settings: {fileID: 1272376841714371236}
---- !u!114 &3058218841676935511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380025543971632927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Core.Tappings.Tapping, Core.Tappings
-          m_MethodName: Tap
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &6681368332675140771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 8120186988220190701}
-  softCurrency: {fileID: 3102641658649333215}
+  softCurrency: {fileID: 0}
 --- !u!114 &8120186988220190701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpgrade: {fileID: 1521834545899607053}
   buttonClickHandler: {fileID: 8046967185717737908}
-  softCurrency: {fileID: 3102641658649333215}
+  softCurrency: {fileID: 0}
   buffCurve:
     serializedVersion: 2
     m_Curve:

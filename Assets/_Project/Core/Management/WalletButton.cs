@@ -8,10 +8,10 @@ namespace Core.Management
         [SerializeField] private StartGame startGame;
         public void OnPointerClick(PointerEventData eventData)
         {
-            startGame.Wallet.gameObject.SetActive(true);
-            startGame.Tapping.gameObject.SetActive(false);
-            startGame.Settings.gameObject.SetActive(false);
-            startGame.Management.gameObject.SetActive(true);
+            startGame.On(startGame.walletCanvasGroup);
+            startGame.Off(startGame.tappingCanvasGroup);
+            startGame.Off(startGame.settingsCanvasGroup);
+            startGame.On(startGame.managementCanvasGroup);
         }
     }
 }

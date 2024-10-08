@@ -8,13 +8,37 @@ namespace Core.Management
         [SerializeField] public Canvas Tapping;
         [SerializeField] public Canvas Settings;
         [SerializeField] public Canvas Management;
-        void Start()
+        public CanvasGroup walletCanvasGroup;
+        public CanvasGroup tappingCanvasGroup;
+        public CanvasGroup settingsCanvasGroup;
+        public CanvasGroup managementCanvasGroup;
+        private void Awake()
         {
-            Wallet.gameObject.SetActive(false);
-            Tapping.gameObject.SetActive(true);
-            Settings.gameObject.SetActive(false);
-            Management.gameObject.SetActive(true);
+            walletCanvasGroup = Wallet.GetComponent<CanvasGroup>();
+            tappingCanvasGroup = Tapping.GetComponent<CanvasGroup>();
+            settingsCanvasGroup = Settings.GetComponent<CanvasGroup>();
+            managementCanvasGroup = Management.GetComponent<CanvasGroup>();
+        }
+        public void Start()
+        {
+            Off(walletCanvasGroup);
+            On(tappingCanvasGroup);
+            Off(settingsCanvasGroup);
+            On(managementCanvasGroup);
+        }
 
+        public void Off(CanvasGroup canvasGroup)
+        {
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+        }
+
+        public void On(CanvasGroup canvasGroup)
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true; 
         }
     }
 }
