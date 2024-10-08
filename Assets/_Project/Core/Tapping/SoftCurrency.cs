@@ -22,7 +22,6 @@ namespace Core.Tappings
         private void OnApplicationQuit()
         {
             new Save("PlayerData", CurrentAmount);
-            Debug.Log(CurrentAmount);
         }
         private void OnEnable()
         {

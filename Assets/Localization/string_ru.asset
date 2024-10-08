@@ -25,15 +25,13 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 10298111713280
     m_Localized: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u0443\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F:
-      {0} \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438
-      \u043D\u0430 {1}% \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435
-      \u043E\u0431\u044A\u0435\u043C\u0430: {2} \r\n"
+      {0}, \u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438:
+      {1}%, \u041E\u0431\u044A\u0435\u043C: {2}\r\n \r\n"
     m_Metadata:
       m_Items:
       - rid: 4466562747786854644
   - m_Id: 12529645019136
-    m_Localized: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C:
-      {0}, \u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C: {1}\r\n"
+    m_Localized: "\u0443\u0440\u043E\u0432\u0435\u043D\u044C\r\n"
     m_Metadata:
       m_Items:
       - rid: 4466562747786854644
@@ -47,6 +45,30 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 265828407336960
     m_Localized: "\u0442\u0430\u043F\u0430\u0442\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 356771248627712
+    m_Localized: "\u0443\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 357205627527168
+    m_Localized: "\u0441\u043E\u0431\u0440\u0430\u0442\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 381718457114624
+    m_Localized: "\u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 383636109680640
+    m_Localized: "\u0446\u0435\u043D\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 384180538728448
+    m_Localized: "\u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 384552049205248
+    m_Localized: "\u0432\u043C\u0435\u0441\u0442\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C"
     m_Metadata:
       m_Items: []
   references:

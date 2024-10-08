@@ -2,14 +2,13 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using Newtonsoft.Json;
 
 namespace Core.Json
 {
     public class Load<T>
     {
-        private string _saveName;
+        private readonly string _saveName;
         private T _data;
 
         public T Data
@@ -18,38 +17,48 @@ namespace Core.Json
             {
                 if (!Memory.saves.ContainsKey(_saveName))
                 {
-                    _data = default(T);
-                    Debug.Log($"[MEMORY]: No data found for key {_saveName}");
-                    return _data;
+                    Debug.LogWarning($"[MEMORY]: No data found for key '{_saveName}'");
+                    return default(T);
                 }
 
                 string savedData = Memory.saves[_saveName];
                 Type type = typeof(T);
 
-                if (type.IsPrimitive || type == typeof(decimal))
+                try
                 {
-                    TypeConverter converter = TypeDescriptor.GetConverter(type);
-                    _data = (T)converter.ConvertFrom(savedData);
+                    // Обработка примитивных типов и строк отдельно
+                    if (type.IsPrimitive || type == typeof(decimal))
+                    {
+                        TypeConverter converter = TypeDescriptor.GetConverter(type);
+                        _data = (T)converter.ConvertFromString(savedData);
+                    }
+                    else if (type == typeof(string))
+                    {
+                        _data = (T)(object)savedData;
+                    }
+                    else
+                    {
+                        // Для сложных объектов - десериализация JSON
+                        _data = JsonConvert.DeserializeObject<T>(savedData);
+                    }
                 }
-                else if (type == typeof(string))
+                catch (Exception e)
                 {
-                    _data = (T)(object)savedData;
-                }
-                else
-                {
-                    _data = JsonConvert.DeserializeObject<T>(savedData);
+                    Debug.LogError($"[MEMORY]: Failed to load data for key '{_saveName}'. Error: {e.Message}");
+                    _data = default(T); // Если произошла ошибка, возвращаем default
                 }
 
-                Debug.Log($"[MEMORY]: Loaded by key {_saveName}: {JsonConvert.SerializeObject(_data)}");
                 return _data;
             }
         }
 
+        // Конструктор, который принимает имя сохранения
         public Load(string saveName)
         {
-            _saveName = saveName;
+            _saveName = saveName ?? throw new ArgumentNullException(nameof(saveName), "Save name cannot be null.");
         }
 
+        // Неявное преобразование класса Load<T> в тип T
         public static implicit operator T(Load<T> load)
         {
             return load.Data;
