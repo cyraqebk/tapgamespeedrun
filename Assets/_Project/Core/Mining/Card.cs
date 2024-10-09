@@ -7,23 +7,26 @@ namespace Core.Mining
 {
     public class Card : MonoBehaviour
     {
-        [SerializeField] public CardConfig cardConfig; // priceperlevel profitperlevel
-        [SerializeField] public int Level;
-        [SerializeField] public bool IsUnlocked;
-        [SerializeField] public SoftCurrency softCurrency;
-        [SerializeField] Button buttonToUpgrade;
+        public CardConfig cardConfig;
+        public string cardName;
+        public int Level;
+        public bool IsUnlocked;
+        public SoftCurrency softCurrency;
+        public Button buttonToUpgrade;
+        private void Start() {
+            string prefabName = transform.name;
+            Debug.Log("Prefab Name: " + prefabName);
+        }
         public void CheckUnlocked()
         {
             if (Level >= 1 && IsUnlocked)
             {
-                Debug.Log("начался майнинг");
                 StartCoroutine(CardMining());
-                // значит теперь досутпен ап
                 buttonToUpgrade.gameObject.SetActive(true);
             }
             else
             {
-                Debug.Log("ne mainit");
+                Debug.LogError("");
             }
 
         }
@@ -32,8 +35,7 @@ namespace Core.Mining
             while (true)
             {
             yield return new WaitForSeconds(60);
-            softCurrency.CurrentAmount += (int)cardConfig.ProfitPerLevel.Evaluate(Level);
-            Debug.Log(softCurrency.CurrentAmount);   
+            softCurrency.CurrentAmount += (int)cardConfig.ProfitPerLevel.Evaluate(Level);  
             }
         }
     }

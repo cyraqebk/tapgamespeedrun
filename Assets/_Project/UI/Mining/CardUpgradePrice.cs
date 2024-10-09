@@ -13,6 +13,6 @@ public class CardUpgradePrice : MonoBehaviour
     }
     void CardPriceText()
     {
-        UpgradeText.text = $"Улучшить: {cardUpgrader.PriceToUpgrade}";
+        UpgradeText.text = $"{cardUpgrader.PriceToUpgrade}";
     }
 }
