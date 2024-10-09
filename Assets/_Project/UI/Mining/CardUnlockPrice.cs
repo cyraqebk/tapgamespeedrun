@@ -21,6 +21,6 @@ public class CardUnlockPrice : MonoBehaviour
     }
     void CardPriceText()
     {
-        UnlockText.text = "Купить: " + cardUnlocker.PriceToUnlock;
+        UnlockText.text = $"{cardUnlocker.PriceToUnlock}";
     }
 }

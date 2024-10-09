@@ -18,13 +18,12 @@ namespace Core.Mining
             {
                 softCurrency.CurrentAmount -= PriceToUpgrade;
                 card.Level++;
-                Debug.Log("Карточка улучшена LVL card: " + card.Level);
                 PriceToUpgrade += (int)card.cardConfig.PricePerLevel.Evaluate(card.Level);
                 OnCardUpgrade?.Invoke();
             }   
             else
             {
-                Debug.Log("Недостаточно денег для улучшения");
+                Debug.LogError("");
             }
 
         }

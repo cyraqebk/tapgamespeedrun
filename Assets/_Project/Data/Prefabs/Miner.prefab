@@ -154,7 +154,7 @@ MonoBehaviour:
   LevelText: {fileID: 2793813441955708336}
   cardUpgrader: {fileID: 5915222490182192859}
   cardUnlocker: {fileID: 61301469104700445}
-  card: {fileID: 4278632036595534858}
+  card: {fileID: 0}
 --- !u!1 &1468741915777553063
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +164,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1629817084175286238}
-  - component: {fileID: 4278632036595534858}
   - component: {fileID: 7865789022046763140}
   m_Layer: 0
   m_Name: Card
@@ -188,23 +187,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 671489954320668891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4278632036595534858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468741915777553063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6efa7493c7daee4a908e201eb3636f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardConfig: {fileID: 11400000, guid: 7f26118db52823e4181f3dc435e6ed7a, type: 2}
-  Level: 0
-  IsUnlocked: 0
-  softCurrency: {fileID: 0}
-  buttonToUpgrade: {fileID: 6055037586663970356}
 --- !u!114 &7865789022046763140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardConfig: {fileID: 11400000, guid: 7f26118db52823e4181f3dc435e6ed7a, type: 2}
-  card: {fileID: 4278632036595534858}
+  card: {fileID: 0}
   Hour: 0
 --- !u!1 &1935934495922934747
 GameObject:
@@ -777,7 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   softCurrency: {fileID: 0}
   PriceToUpgrade: 2000
-  card: {fileID: 4278632036595534858}
+  card: {fileID: 0}
   button: {fileID: 6055037586663970356}
 --- !u!114 &6115776792432388366
 MonoBehaviour:
@@ -1235,7 +1217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   softCurrency: {fileID: 0}
   PriceToUnlock: 1000
-  card: {fileID: 4278632036595534858}
+  card: {fileID: 0}
   button: {fileID: 1414502526796353036}
 --- !u!114 &1953968420102780973
 MonoBehaviour:

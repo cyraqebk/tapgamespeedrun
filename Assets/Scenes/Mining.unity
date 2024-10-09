@@ -118,6 +118,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &192496845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6055037586663970356, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+  m_PrefabInstance: {fileID: 1513139089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &261884867
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +141,7 @@ GameObject:
   - component: {fileID: 261884869}
   - component: {fileID: 261884868}
   - component: {fileID: 261884871}
+  - component: {fileID: 261884872}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -223,8 +235,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6985286a95d15d46b2b3b13127a590a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameInitializer: {fileID: 261884872}
   currentCurrency:
-    _value: 112111111
+    _value: 50000
+--- !u!114 &261884872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261884867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249a6872e2e893439c70fbaa1ef58da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &321136925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6502844256539506050, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+  m_PrefabInstance: {fileID: 1513139089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &433641389
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +333,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &560393052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6055037586663970356, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+  m_PrefabInstance: {fileID: 1001694051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &751019988
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +457,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 751019992}
     m_Modifications:
     - target: {fileID: 61301469104700445, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1200139515}
+    - target: {fileID: 61301469104700445, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: softCurrency
       value: 
       objectReference: {fileID: 261884871}
@@ -519,10 +564,18 @@ PrefabInstance:
       propertyPath: softCurrency
       value: 
       objectReference: {fileID: 261884871}
+    - target: {fileID: 5684352161261471364, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1200139515}
     - target: {fileID: 5713778782778717971, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: m_text
       value: Vnuchka
       objectReference: {fileID: 0}
+    - target: {fileID: 5915222490182192859, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1200139515}
     - target: {fileID: 5915222490182192859, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: softCurrency
       value: 
@@ -535,6 +588,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vnuchka
       objectReference: {fileID: 0}
+    - target: {fileID: 6863747179245596430, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: cardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: fcbedf39d324f084ba32fb440eee10fb, type: 2}
+    - target: {fileID: 6863747179245596430, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: softCurrency
+      value: 
+      objectReference: {fileID: 261884871}
+    - target: {fileID: 6863747179245596430, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: buttonToUpgrade
+      value: 
+      objectReference: {fileID: 192496845}
+    - target: {fileID: 7865789022046763140, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1200139515}
     - target: {fileID: 7865789022046763140, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: cardConfig
       value: 
@@ -542,13 +611,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6502844256539506050, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1200139515}
   m_SourcePrefab: {fileID: 100100000, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
 --- !u!224 &1001694052 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 671489954320668891, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
   m_PrefabInstance: {fileID: 1001694051}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1200139512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6502844256539506050, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+  m_PrefabInstance: {fileID: 1001694051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1200139515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200139512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6efa7493c7daee4a908e201eb3636f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardConfig: {fileID: 11400000, guid: fcbedf39d324f084ba32fb440eee10fb, type: 2}
+  cardName: 
+  Level: 0
+  IsUnlocked: 0
+  softCurrency: {fileID: 261884871}
+  buttonToUpgrade: {fileID: 560393052}
 --- !u!1001 &1513139089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557,6 +652,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 751019992}
     m_Modifications:
+    - target: {fileID: 61301469104700445, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1513139093}
     - target: {fileID: 61301469104700445, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: softCurrency
       value: 
@@ -653,12 +752,20 @@ PrefabInstance:
       propertyPath: softCurrency
       value: 
       objectReference: {fileID: 261884871}
+    - target: {fileID: 5684352161261471364, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1513139093}
     - target: {fileID: 5713778782778717971, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: m_text
       value: 'DED
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 5915222490182192859, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1513139093}
     - target: {fileID: 5915222490182192859, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: softCurrency
       value: 
@@ -671,21 +778,106 @@ PrefabInstance:
       propertyPath: m_Name
       value: DED
       objectReference: {fileID: 0}
+    - target: {fileID: 6863747179245596430, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: cardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: f0b98e6ee4d704942b9720d76bb3c262, type: 2}
+    - target: {fileID: 6863747179245596430, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: softCurrency
+      value: 
+      objectReference: {fileID: 261884871}
+    - target: {fileID: 6863747179245596430, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: buttonToUpgrade
+      value: 
+      objectReference: {fileID: 192496845}
+    - target: {fileID: 7865789022046763140, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 1513139093}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6502844256539506050, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1513139093}
   m_SourcePrefab: {fileID: 100100000, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
 --- !u!224 &1513139090 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 671489954320668891, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
   m_PrefabInstance: {fileID: 1513139089}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1513139093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321136925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6efa7493c7daee4a908e201eb3636f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardConfig: {fileID: 11400000, guid: f0b98e6ee4d704942b9720d76bb3c262, type: 2}
+  cardName: 
+  Level: 0
+  IsUnlocked: 0
+  softCurrency: {fileID: 261884871}
+  buttonToUpgrade: {fileID: 192496845}
+--- !u!114 &2069937920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6055037586663970356, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+  m_PrefabInstance: {fileID: 7261823903711544881}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2102077898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6502844256539506050, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+  m_PrefabInstance: {fileID: 7261823903711544881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5414435521866111756 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 671489954320668891, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
   m_PrefabInstance: {fileID: 7261823903711544881}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5414435521866111759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102077898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8dd249612b445a40be09750b7ed871a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filePath: 
+  cardData: {card: {fileID: 0}, cardUnlocker: {fileID: 0}, cardUpgrader: {fileID: 0}, profitPerHour: {fileID: 0}, CardName: , CardLevel: 0, CardUnlockPrice: 0, CardUpgradePrice: 0, CardHourProfit: 0}
+--- !u!114 &5414435521866111760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102077898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6efa7493c7daee4a908e201eb3636f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardConfig: {fileID: 11400000, guid: 7f26118db52823e4181f3dc435e6ed7a, type: 2}
+  cardName: 
+  Level: 0
+  IsUnlocked: 0
+  softCurrency: {fileID: 261884871}
+  buttonToUpgrade: {fileID: 2069937920}
 --- !u!1001 &7261823903711544881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -694,6 +886,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 751019992}
     m_Modifications:
+    - target: {fileID: 61301469104700445, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 5414435521866111760}
     - target: {fileID: 61301469104700445, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: softCurrency
       value: 
@@ -782,6 +978,14 @@ PrefabInstance:
       propertyPath: softCurrency
       value: 
       objectReference: {fileID: 261884871}
+    - target: {fileID: 5684352161261471364, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 5414435521866111760}
+    - target: {fileID: 5915222490182192859, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 5414435521866111760}
     - target: {fileID: 5915222490182192859, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
       propertyPath: softCurrency
       value: 
@@ -790,10 +994,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Baboolya
       objectReference: {fileID: 0}
+    - target: {fileID: 7865789022046763140, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 5414435521866111760}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6502844256539506050, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5414435521866111759}
+    - targetCorrespondingSourceObject: {fileID: 6502844256539506050, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5414435521866111760}
   m_SourcePrefab: {fileID: 100100000, guid: 04c6d95cc67fc5b46af614b34dd26b8a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

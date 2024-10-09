@@ -20,13 +20,12 @@ public class CardDisplay : MonoBehaviour
     private void OnDisable() 
     {
         cardUpgrader.OnCardUpgrade -= CardProfitText;
-        cardUnlocker.OnCardUnlock += CardProfitText;
+        cardUnlocker.OnCardUnlock -= CardProfitText;
     }
     void CardProfitText()
     {
-        // ProfitText.text = "Доход в час: " + profitPerHour.Hour;
         profitPerHour.ProfitHour();
-        ProfitText.text = $"Доход в/час: {profitPerHour.Hour}";
-        LevelText.text = $"Уровень: {card.Level}";
+        ProfitText.text = $"{profitPerHour.Hour}";
+        LevelText.text = $"{card.Level}";
     }
 }
