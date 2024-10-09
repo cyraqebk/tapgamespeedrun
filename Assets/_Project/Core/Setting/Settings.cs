@@ -6,7 +6,7 @@ namespace Core.Setting
     public class Settings : MonoBehaviour
     {
         public AudioSource backgroundMusic;
-        public bool vbr = true;
+        public bool vbr;
         private void Start()
         {
             backgroundMusic.Play();

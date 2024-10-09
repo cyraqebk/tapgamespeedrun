@@ -10,20 +10,37 @@ namespace UI.Tappings
         [SerializeField] private ButtonClickHandler buttonClickHandler;
         [SerializeField] private SoftCurrency softCurrency;
         [SerializeField] private AnimationCurve buffCurve;
-        private void Awake()   
+        private void Start()   
         {
-            levelUpgrade.levelTextAmount = "Цена за улучшение " + levelUpgrade.GetUpgradeCost() + "   уровень: " + levelUpgrade.currenLevelProperty;
+            levelUpgrade.levelTextAmount = levelUpgrade.GetUpgradeCost().ToString();
         }
         public void OnPointerClick(PointerEventData eventData)
         {
             if (softCurrency.CurrentAmount>levelUpgrade.GetUpgradeCost())
             {
-                float buff = buffCurve.Evaluate(levelUpgrade.currenLevelProperty);
                 softCurrency.CurrentAmount -=levelUpgrade.GetUpgradeCost();
                 levelUpgrade.UpgradeLevel();
-                buttonClickHandler.currencyIncrementProperty = Mathf.CeilToInt(buff);
-                levelUpgrade.levelTextAmount = "Цена за улучшение " + levelUpgrade.GetUpgradeCost() + "   уровень: " + levelUpgrade.currenLevelProperty;
+                levelUpgrade.levelTextAmount = levelUpgrade.GetUpgradeCost().ToString();
             }
+        }
+        private void OnEnable()
+        {
+            levelUpgrade.CurrenLevel.Changed += OnPriceChanged;
+            Debug.Log(levelUpgrade.currenLevelProperty);
+            float buff = buffCurve.Evaluate(levelUpgrade.currenLevelProperty);
+            buttonClickHandler.currencyIncrementProperty = Mathf.CeilToInt(buff);
+        }
+        
+        private void OnDisable()
+        {
+            levelUpgrade.CurrenLevel.Changed -= OnPriceChanged;
+        }
+
+        private void OnPriceChanged(int oldValue, int newValue)
+        {
+            Debug.Log(levelUpgrade.currenLevelProperty);
+            float buff = buffCurve.Evaluate(levelUpgrade.currenLevelProperty);
+            buttonClickHandler.currencyIncrementProperty = Mathf.CeilToInt(buff);
         }
         
     }

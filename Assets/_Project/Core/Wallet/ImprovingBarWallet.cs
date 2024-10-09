@@ -6,11 +6,14 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 using TMPro;
+using Core.Json;
+using System.Collections;
 
 namespace Core.Wallet
 {
     public class ImprovingBarWallet : MonoBehaviour
     {
+        [SerializeField] private GameInitializer gameInitializer;
         [SerializeField] private SoftCurrency softCurrency;
         [SerializeField] private AnimationCurve MiningSpeedWeapon;
         [SerializeField] private AnimationCurve CapacityWeapon;
@@ -34,15 +37,50 @@ namespace Core.Wallet
             set=>WeaponLevelText.Value = value;
         }
         public ReactiveField<string> WeaponLevelTextField => WeaponLevelText;
-        public void Awake()
-        { 
-            ImprovementButtonText();
-        }
-        public void ImprovementButtonText()
+        private void Start() 
         {
-            var localizedString = new LocalizedString("string", "WeaponImImprovement");
-            
+            if (Memory.saves.ContainsKey("LevelWeapon"))
+            {
+                var loadedlevelWeapon  = new Load<int>("LevelWeapon");
+                if (loadedlevelWeapon!=0)
+                {
+                    levelWeapon = loadedlevelWeapon;
+                }
+            }
         }
+        private void OnEnable()
+        {
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.StopGame += Save;
+                gameInitializer.OnSaveComplete += OnSaveComplete;
+            }
+        }
+        private void OnDisable()
+        {
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.OnSaveComplete -= OnSaveComplete;
+            }
+        }
+
+        private void Save()
+        {
+            StartCoroutine(SaveCoroutine());
+        }
+
+        private IEnumerator SaveCoroutine()
+        {
+            new Save("LevelWeapon", levelWeapon);
+            yield return null;
+        }
+
+        private void OnSaveComplete()
+        {
+        }
+
         public int GettingPriceWeapon(int level)
         {
             float price = PriceWeapon.Evaluate(level+1);
@@ -67,7 +105,6 @@ namespace Core.Wallet
                 passiveIncome.MiningSpeedProperty = GettingMiningSpeedWeapon(levelWeapon);
                 levelWeapon++;  
                 Changed?.Invoke();
-                ImprovementButtonText();
             }
         }
     }

@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d99561f9dde3c40a31827a6c137949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameInitializer: {fileID: 0}
   priiceCurve:
     serializedVersion: 2
     m_Curve:
@@ -604,6 +605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1547717423686098926}
+  - component: {fileID: 4040227571153105003}
   - component: {fileID: 7798311885492520784}
   - component: {fileID: 8574974174890724853}
   - component: {fileID: 5855932553220696414}
@@ -635,6 +637,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -352}
   m_SizeDelta: {x: 694.4905, y: 168.0397}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4040227571153105003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857443846201755455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a1aef3063d6c144ac93555d7082134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceText: {fileID: 0}
+  lvl: {fileID: 0}
+  levelUpgrade: {fileID: 0}
 --- !u!114 &7798311885492520784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 8044132844286744306}
+  lvl: {fileID: 0}
   levelUpgrade: {fileID: 1521834545899607053}
 --- !u!222 &7716014133664097746
 CanvasRenderer:

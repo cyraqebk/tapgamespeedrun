@@ -31,7 +31,7 @@ namespace UI.Wallet
             _percentSpeedText.text = percentSpeed.ToString() + " %";
             _volumeText.text = _volume.ToString();
         }
-        private void Purpose()
+        public void Purpose()
         {
             level = improvingBarWallet.levelWeaponProperty;
             _speed = Mathf.Round(improvingBarWallet.GettingMiningSpeedWeapon(improvingBarWallet.levelWeaponProperty - 1) * 100f)/100f;

@@ -63,6 +63,22 @@ MonoBehaviour:
     m_Key: Capacity
     m_Metadata:
       m_Items: []
+  - m_Id: 641342137589760
+    m_Key: Poke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688522944733184
+    m_Key: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688602485514240
+    m_Key: Vibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694962942009344
+    m_Key: Resetting saves
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

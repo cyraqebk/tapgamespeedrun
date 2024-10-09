@@ -7,6 +7,7 @@ namespace UI.Tappings
     public class PriceDisplay : MonoBehaviour
     {
         [SerializeField] private TMP_Text priceText;
+        [SerializeField] private TMP_Text lvl;
         [SerializeField] private LevelUpgrade levelUpgrade;
 
         private void OnEnable()
@@ -14,7 +15,7 @@ namespace UI.Tappings
             levelUpgrade.levelField.Changed += OnPriceChanged;
             priceText.text = levelUpgrade.levelTextAmount;
         }
-
+        
         private void OnDisable()
         {
             levelUpgrade.levelField.Changed -= OnPriceChanged;
@@ -23,6 +24,7 @@ namespace UI.Tappings
         private void OnPriceChanged(string oldValue, string newValue)
         {
             priceText.text = newValue.ToString();
+            lvl.text = levelUpgrade.currenLevelProperty.ToString();
         }
     }
 }

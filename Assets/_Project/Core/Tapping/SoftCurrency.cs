@@ -1,6 +1,7 @@
 using UnityEngine;
 using Core.ReactiveFields;
 using Core.Json;
+using System.Collections;
 
 namespace Core.Tappings
 {
@@ -19,21 +20,37 @@ namespace Core.Tappings
             var loadedCurrency  = new Load<int>("CurrentAmount");
             CurrentAmount = loadedCurrency;
         }
-        private void OnApplicationQuit()
-        {
-            new Save("PlayerData", CurrentAmount);
-        }
         private void OnEnable()
         {
-            gameInitializer.StopGame += Save;
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.StopGame += Save;
+                gameInitializer.OnSaveComplete += OnSaveComplete;
+            }
         }
         private void OnDisable()
         {
-            gameInitializer.StopGame -= Save;
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.OnSaveComplete -= OnSaveComplete;
+            }
         }
+
         private void Save()
         {
+            StartCoroutine(SaveCoroutine());
+        }
+
+        private IEnumerator SaveCoroutine()
+
+        {
             new Save("CurrentAmount", CurrentAmount);
+            yield return null;
+        }
+        private void OnSaveComplete()
+        {
         }
     }
 }
