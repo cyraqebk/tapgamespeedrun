@@ -15,6 +15,7 @@ namespace Core.Mining
         public Button buttonToUpgrade;
         private void Start() {
             string prefabName = transform.name;
+            Debug.Log("Prefab Name: " + prefabName);
         }
         public void CheckUnlocked()
         {
@@ -34,7 +35,7 @@ namespace Core.Mining
             while (true)
             {
             yield return new WaitForSeconds(60);
-            // softCurrency.CurrentAmount += (int)cardConfig.ProfitPerLevel.Evaluate(Level);  
+            softCurrency.CurrentAmount += (int)cardConfig.ProfitPerLevel.Evaluate(Level);  
             }
         }
     }

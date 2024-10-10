@@ -8,19 +8,16 @@ namespace Core.Management
         [SerializeField] public Canvas Tapping;
         [SerializeField] public Canvas Settings;
         [SerializeField] public Canvas Management;
-        [SerializeField] public Canvas Mining;
         public CanvasGroup walletCanvasGroup;
         public CanvasGroup tappingCanvasGroup;
         public CanvasGroup settingsCanvasGroup;
         public CanvasGroup managementCanvasGroup;
-        public CanvasGroup miningCanvasGroup;
         private void Awake()
         {
             walletCanvasGroup = Wallet.GetComponent<CanvasGroup>();
             tappingCanvasGroup = Tapping.GetComponent<CanvasGroup>();
             settingsCanvasGroup = Settings.GetComponent<CanvasGroup>();
             managementCanvasGroup = Management.GetComponent<CanvasGroup>();
-            miningCanvasGroup = Mining.GetComponent<CanvasGroup>();
         }
         public void Start()
         {
@@ -28,7 +25,6 @@ namespace Core.Management
             On(tappingCanvasGroup);
             Off(settingsCanvasGroup);
             On(managementCanvasGroup);
-            Off(miningCanvasGroup);
         }
 
         public void Off(CanvasGroup canvasGroup)

@@ -7,36 +7,79 @@ namespace Core.Tappings
 {
     public class LevelUpgrade : MonoBehaviour
     {
-        [SerializeField] private GameInitializer _gameInitializer;
-        [SerializeField] private SoftCurrency _softCurrency;
-        [SerializeField] private AnimationCurve _priceCurve;
-        [SerializeField] private AnimationCurve _buffCurve;
-        [SerializeField] private int _maxLevel = 50;
-        [SerializeField] private int _speed = 1;
-        [SerializeField] private ReactiveField<int> _currenLevel = new ReactiveField<int>(1);
-        public ReactiveField<int> CurrenLevel => _currenLevel;
-        [SerializeField] private int _price = 10;
-        public int GetThePrice()
+        [SerializeField] private GameInitializer gameInitializer;
+        [SerializeField] private AnimationCurve priiceCurve;
+        [SerializeField] private int MaxLevel = 50;
+        [SerializeField] private ReactiveField<int> currenLevel = new ReactiveField<int>();
+        public int currenLevelProperty
         {
-            float normalizedLevel = (float)_currenLevel.Value;
-            float price = _priceCurve.Evaluate(normalizedLevel);
+            get=>currenLevel.Value;
+            set=>currenLevel.Value=value;
+        }
+        public ReactiveField<int> CurrenLevel => currenLevel;
+        [SerializeField] private ReactiveField<string> levelText = new ReactiveField<string>("");
+        public string levelTextAmount
+        {
+            get => levelText.Value;
+            set => levelText.Value = value;
+        }
+        public ReactiveField<string> levelField => levelText;
+        public int MaxLevelProperty
+        {
+            get => MaxLevel;
+        }
+        public int GetUpgradeCost()
+        {
+            float normalizedLevel = (float)currenLevel.Value;
+            float price = priiceCurve.Evaluate(normalizedLevel);
             return Mathf.CeilToInt(price);
         }
-        public int GetTheSpeed()
+        public void UpgradeLevel()
         {
-            float normalizedLevel = (float)_currenLevel.Value;
-            float speed = _buffCurve.Evaluate(normalizedLevel);
-            return Mathf.CeilToInt(speed);
-        }
-        public void Improvement()
-        {
-            if (_softCurrency.CurrencyField.Value >= GetThePrice())
+            if (currenLevel.Value < MaxLevel)
             {
-                _softCurrency.SubtractingValue(GetThePrice());
-                _currenLevel.Value += 1;
-                _price = GetThePrice();
-                _speed = GetTheSpeed();
+                int UpgradeCost = GetUpgradeCost();
+                currenLevel.Value++;
+            } 
+        }
+        private void Start() 
+        {
+            currenLevelProperty = 1;
+            var loadedCurrenLevel  = new Load<int>("CurrenLevel");
+            currenLevel.Value = loadedCurrenLevel;
+            levelTextAmount = currenLevel.Value.ToString();
+        }
+        private void OnEnable()
+        {
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.StopGame += Save;
+                gameInitializer.OnSaveComplete += OnSaveComplete;
             }
+        }
+        private void OnDisable()
+        {
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.OnSaveComplete -= OnSaveComplete;
+            }
+        }
+
+        private void Save()
+        {
+            StartCoroutine(SaveCoroutine());
+        }
+
+        private IEnumerator SaveCoroutine()
+
+        {
+            new Save("CurrenLevel", currenLevel.Value);
+            yield return null;
+        }
+        private void OnSaveComplete()
+        {
         }
         
     }

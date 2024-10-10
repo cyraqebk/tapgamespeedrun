@@ -12,7 +12,6 @@ namespace Core.Management
             startGame.Off(startGame.tappingCanvasGroup);
             startGame.On(startGame.settingsCanvasGroup);
             startGame.Off(startGame.managementCanvasGroup);
-            startGame.Off(startGame.miningCanvasGroup);
         }
     }
 }

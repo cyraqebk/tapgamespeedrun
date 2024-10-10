@@ -19,13 +19,44 @@ namespace Core.Wallet
         {
             if (Memory.saves.ContainsKey("WalletAmountProperty"))
             {
-                var loadedWalletAmountProperty  = new Load<float>("WalletAmountProperty");
+                var loadedWalletAmountProperty  = new Load<int>("WalletAmountProperty");
                 if (loadedWalletAmountProperty!=0)
                 {
                     WalletAmountProperty = loadedWalletAmountProperty;
                 }
             }
         }
-        
+        private void OnEnable()
+        {
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.StopGame += Save;
+                gameInitializer.OnSaveComplete += OnSaveComplete;
+            }
+        }
+        private void OnDisable()
+        {
+            if (gameInitializer != null)
+            {
+                gameInitializer.StopGame -= Save;
+                gameInitializer.OnSaveComplete -= OnSaveComplete;
+            }
+        }
+
+        private void Save()
+        {
+            StartCoroutine(SaveCoroutine());
+        }
+
+        private IEnumerator SaveCoroutine()
+        {
+            new Save("WalletAmountProperty", WalletAmountProperty);
+            yield return null;
+        }
+
+        private void OnSaveComplete()
+        {
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace UI.Wallet
         [SerializeField] private ImprovingBarWallet improvingBarWallet;
         public void OnPointerClick(PointerEventData eventData)
         {
-            // improvingBarWallet.UpgradeLevel();
+            improvingBarWallet.UpgradeLevel();
         }
     }
 }

@@ -11,16 +11,16 @@ namespace UI.Tappings
 
         private void OnEnable()
         {
-            softCurrency.CurrencyField.Changed += CurrencyText;
-            moneyText.text = softCurrency.CurrencyField.Value.ToString();
+            softCurrency.CurrencyField.Changed += OnMoneyChanged;
+            moneyText.text = softCurrency.CurrentAmount.ToString();
         }
 
         private void OnDisable()
         {
-            softCurrency.CurrencyField.Changed -= CurrencyText;
+            softCurrency.CurrencyField.Changed -= OnMoneyChanged;
         }
 
-        private void CurrencyText(int oldValue, int newValue)
+        private void OnMoneyChanged(int oldValue, int newValue)
         {
             moneyText.text = newValue.ToString();
         }

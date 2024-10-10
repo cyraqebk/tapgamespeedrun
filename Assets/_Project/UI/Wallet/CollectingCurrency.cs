@@ -13,13 +13,13 @@ namespace UI.Wallet
         [SerializeField] private PassiveIncome passiveIncome;
         public void OnPointerClick(PointerEventData eventData)
         {
-            // softCurrency.CurrentAmount += (int)walletAmount.WalletAmountProperty;
-            // if (walletAmount.WalletAmountProperty >= passiveIncome.MaximumValueWalletProperty)
-            // {
-            //     walletAmount.WalletAmountProperty = 0;
-            //     StartCoroutine(passiveIncome.RepeatEverySecond());
-            // }
-            // walletAmount.WalletAmountProperty = 0;
+            softCurrency.CurrentAmount += (int)walletAmount.WalletAmountProperty;
+            if (walletAmount.WalletAmountProperty >= passiveIncome.MaximumValueWalletProperty)
+            {
+                walletAmount.WalletAmountProperty = 0;
+                StartCoroutine(passiveIncome.RepeatEverySecond());
+            }
+            walletAmount.WalletAmountProperty = 0;
         }
     }
 }

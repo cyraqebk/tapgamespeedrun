@@ -12,20 +12,19 @@ namespace UI.Tappings
 
         private void OnEnable()
         {
-            levelUpgrade.CurrenLevel.Changed += OnPriceChanged;
-            priceText.text = levelUpgrade.GetThePrice().ToString();
-            lvl.text = levelUpgrade.CurrenLevel.Value.ToString();
+            levelUpgrade.levelField.Changed += OnPriceChanged;
+            priceText.text = levelUpgrade.levelTextAmount;
         }
-
+        
         private void OnDisable()
         {
-            levelUpgrade.CurrenLevel.Changed -= OnPriceChanged;
+            levelUpgrade.levelField.Changed -= OnPriceChanged;
         }
 
-        private void OnPriceChanged(int oldValue, int newValue)
+        private void OnPriceChanged(string oldValue, string newValue)
         {
-            priceText.text = levelUpgrade.GetThePrice().ToString();
-            lvl.text = levelUpgrade.CurrenLevel.Value.ToString();
+            priceText.text = newValue.ToString();
+            lvl.text = levelUpgrade.currenLevelProperty.ToString();
         }
     }
 }

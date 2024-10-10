@@ -79,26 +79,6 @@ MonoBehaviour:
     m_Key: Resetting saves
     m_Metadata:
       m_Items: []
-  - m_Id: 736707171999744
-    m_Key: Buy
-    m_Metadata:
-      m_Items: []
-  - m_Id: 737274636165120
-    m_Key: Profit Per Hour
-    m_Metadata:
-      m_Items: []
-  - m_Id: 738280526733312
-    m_Key: Grandmother
-    m_Metadata:
-      m_Items: []
-  - m_Id: 738488438382592
-    m_Key: Granddaughter
-    m_Metadata:
-      m_Items: []
-  - m_Id: 738667832958976
-    m_Key: Ded
-    m_Metadata:
-      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
