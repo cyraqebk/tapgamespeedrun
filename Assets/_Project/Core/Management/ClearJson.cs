@@ -31,16 +31,16 @@ namespace Core.Management
         }
         public void ClearAll()
         {
-            softCurrency.CurrentAmount = 0;
-            levelUpgrade.currenLevelProperty = 1;
-            levelUpgrade.levelTextAmount = "1";
-            levelUpgrade.levelTextAmount = levelUpgrade.GetUpgradeCost().ToString();
-            this.passiveIncome.MaximumValueWalletProperty = 1000;
-            this.passiveIncome.MiningSpeedProperty = 1;
-            walletAmount.WalletAmountProperty = 0;
-            improvingBarWallet.levelWeaponProperty =1;
-            improvingBarWallet.WeaponLevelTextProperty = "1";
-            localiText.Purpose();
+            // softCurrency.CurrentAmount = 0;
+            // levelUpgrade.CurrenLevelProperty = 1;
+            // levelUpgrade.levelTextAmount = "1";
+            // levelUpgrade.levelTextAmount = levelUpgrade.GetUpgradeCost().ToString();
+            // this.passiveIncome.MaximumValueWalletProperty = 1000;
+            // this.passiveIncome.MiningSpeedProperty = 1;
+            // walletAmount.WalletAmountProperty = 0;
+            // improvingBarWallet.levelWeaponProperty =1;
+            // improvingBarWallet.WeaponLevelTextProperty = "1";
+            // localiText.Purpose();
         }
 
     }

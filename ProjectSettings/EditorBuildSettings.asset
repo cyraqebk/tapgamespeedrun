@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Wallet.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 0
+    path: Assets/Scenes/Main.unity
+    guid: 39b1d73840b6ce640a4195dd3cac6c11
+  - enabled: 1
+    path: Assets/Scenes/Tapping.unity
+    guid: bc1067e653110a7449b8ee1f79da10eb
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: c114f22647406284f95a7759f2c69f88, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

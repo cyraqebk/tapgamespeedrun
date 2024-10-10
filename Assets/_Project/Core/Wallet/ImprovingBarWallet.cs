@@ -48,38 +48,7 @@ namespace Core.Wallet
                 }
             }
         }
-        private void OnEnable()
-        {
-            if (gameInitializer != null)
-            {
-                gameInitializer.StopGame -= Save;
-                gameInitializer.StopGame += Save;
-                gameInitializer.OnSaveComplete += OnSaveComplete;
-            }
-        }
-        private void OnDisable()
-        {
-            if (gameInitializer != null)
-            {
-                gameInitializer.StopGame -= Save;
-                gameInitializer.OnSaveComplete -= OnSaveComplete;
-            }
-        }
-
-        private void Save()
-        {
-            StartCoroutine(SaveCoroutine());
-        }
-
-        private IEnumerator SaveCoroutine()
-        {
-            new Save("LevelWeapon", levelWeapon);
-            yield return null;
-        }
-
-        private void OnSaveComplete()
-        {
-        }
+        
 
         public int GettingPriceWeapon(int level)
         {
@@ -96,16 +65,16 @@ namespace Core.Wallet
             float capacity = CapacityWeapon.Evaluate(level+1);
             return Mathf.CeilToInt(capacity);
         }
-        public void UpgradeLevel()
-        {
-            if (levelWeapon < MaxLevelWeapon &&  GettingPriceWeapon(levelWeapon) <= softCurrency.CurrentAmount)
-            {
-                softCurrency.CurrentAmount -= GettingPriceWeapon(levelWeapon);
-                passiveIncome.MaximumValueWalletProperty = GettingCapacityWeapon(levelWeapon);
-                passiveIncome.MiningSpeedProperty = GettingMiningSpeedWeapon(levelWeapon);
-                levelWeapon++;  
-                Changed?.Invoke();
-            }
-        }
+        // public void UpgradeLevel()
+        // {
+        //     if (levelWeapon < MaxLevelWeapon &&  GettingPriceWeapon(levelWeapon) <= softCurrency.CurrentAmount)
+        //     {
+        //         softCurrency.CurrentAmount -= GettingPriceWeapon(levelWeapon);
+        //         passiveIncome.MaximumValueWalletProperty = GettingCapacityWeapon(levelWeapon);
+        //         passiveIncome.MiningSpeedProperty = GettingMiningSpeedWeapon(levelWeapon);
+        //         levelWeapon++;  
+        //         Changed?.Invoke();
+        //     }
+        // }
     }
 }
