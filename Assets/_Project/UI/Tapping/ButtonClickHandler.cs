@@ -9,16 +9,11 @@ namespace UI.Tappings
     {
         [SerializeField] private SoftCurrency softCurrency;
         [SerializeField] private Settings settings;
-        private int currencyIncrement = 1;
-        public int currencyIncrementProperty
-        {
-            get => currencyIncrement;
-            set => currencyIncrement = value;
-        }
+        [SerializeField] private LevelUpgrade levelUpgrade;
         public void OnPointerClick(PointerEventData eventData)
         {
             settings.vibrationpusk();
-            softCurrency.CurrentAmount += currencyIncrement;
+            softCurrency.CurrencyIncrease(levelUpgrade.GetTheSpeed());
         }
     }
 }

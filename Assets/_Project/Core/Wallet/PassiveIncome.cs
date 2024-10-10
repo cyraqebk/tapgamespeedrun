@@ -69,39 +69,6 @@ namespace Core.Wallet
                 walletAmount.WalletAmountProperty += (int)secondsDifference * MiningSpeed;
             }
         }
-        private void OnEnable()
-        {
-            if (gameInitializer != null)
-            {
-                gameInitializer.StopGame -= Save;
-                gameInitializer.StopGame += Save;
-                gameInitializer.OnSaveComplete += OnSaveComplete;
-            }
-        }
-        private void OnDisable()
-        {
-            if (gameInitializer != null)
-            {
-                gameInitializer.StopGame -= Save;
-                gameInitializer.OnSaveComplete -= OnSaveComplete;
-            }
-        }
-
-        private void Save()
-        {
-            StartCoroutine(SaveCoroutine());
-        }
-
-        private IEnumerator SaveCoroutine()
-        {
-            new Save("MaximumValueWallet", MaximumValueWallet);
-            new Save("MiningSpeed", MiningSpeed);
-            DateTime TimeWallet = DateTime.Now;
-            new Save("TimeWallet", TimeWallet);
-            yield return null;
-        }
-        private void OnSaveComplete()
-        {
-        }
+       
     }
 }

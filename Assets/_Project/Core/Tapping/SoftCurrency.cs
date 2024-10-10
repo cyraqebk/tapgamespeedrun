@@ -7,51 +7,50 @@ namespace Core.Tappings
 {
     public class SoftCurrency : MonoBehaviour
     {
-        [SerializeField] private GameInitializer gameInitializer;
-        [SerializeField] private ReactiveField<int> currentCurrency = new ReactiveField<int>(0);
-        public int CurrentAmount
+        [SerializeField] private GameInitializer _gameInitializer;
+        [SerializeField] private ReactiveField<int> _currentCurrency = new ReactiveField<int>(0);
+        public ReactiveField<int> CurrencyField => _currentCurrency;
+        private void Start()
         {
-            get => currentCurrency.Value;
-            set => currentCurrency.Value = value;
+            _gameInitializer.SubscribeToStopGame(OnStopGame);
+            LoadPlayerData();
         }
-        public ReactiveField<int> CurrencyField => currentCurrency;
-        private void Start() 
+        private void OnDestroy()
         {
-            var loadedCurrency  = new Load<int>("CurrentAmount");
-            CurrentAmount = loadedCurrency;
-        }
-        private void OnEnable()
-        {
-            if (gameInitializer != null)
+            if (_gameInitializer != null)
             {
-                gameInitializer.StopGame -= Save;
-                gameInitializer.StopGame += Save;
-                gameInitializer.OnSaveComplete += OnSaveComplete;
+                _gameInitializer.UnsubscribeFromStopGame(OnStopGame);
             }
         }
-        private void OnDisable()
+        private void OnStopGame()
         {
-            if (gameInitializer != null)
+            SavePlayerData();
+        }
+        private void SavePlayerData()
+        {
+            Debug.Log("Save " + _currentCurrency.Value);
+            new Save("_currentCurrency", _currentCurrency.Value);
+        }
+        private void LoadPlayerData()
+        {
+            Load<int> loadData = new Load<int>("_currentCurrency");
+            int loadedCurrency = loadData;
+            if (loadedCurrency != 0)
             {
-                gameInitializer.StopGame -= Save;
-                gameInitializer.OnSaveComplete -= OnSaveComplete;
+                _currentCurrency.Value = loadedCurrency;
             }
         }
-
-        private void Save()
+        
+        public void CurrencyIncrease(int meaning)
         {
-            StartCoroutine(SaveCoroutine());
+            _currentCurrency.Value += meaning;
         }
-
-        private IEnumerator SaveCoroutine()
-
+        public void SubtractingValue(int meaning)
         {
-            new Save("CurrentAmount", CurrentAmount);
-            yield return null;
-        }
-        private void OnSaveComplete()
-        {
+            if ((_currentCurrency.Value - meaning) >= 0)
+            {
+                _currentCurrency.Value -= meaning;
+            }
         }
     }
 }
-

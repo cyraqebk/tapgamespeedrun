@@ -12,21 +12,17 @@ namespace Core.Mining
         [SerializeField] private Button button;
         public delegate void CardUnlock();  // Делегат для события
         public event CardUnlock OnCardUnlock;  // Событие прокачки майнера
-        public void Unlock() 
-        {
-            if (softCurrency.CurrentAmount >= PriceToUnlock)
-            {
-                softCurrency.CurrentAmount -= PriceToUnlock;
-                card.Level++;
-                card.IsUnlocked = true;
-                button.gameObject.SetActive(false);
-                card.CheckUnlocked();
-                OnCardUnlock?.Invoke();
-            }
-            else
-            {
-                Debug.LogError("");
-            }
-        }
+        // public void Unlock() 
+        // {
+        //     if (softCurrency.CurrentAmount >= PriceToUnlock)
+        //     {
+        //         softCurrency.CurrentAmount -= PriceToUnlock;
+        //         card.Level++;
+        //         card.IsUnlocked = true;
+        //         button.gameObject.SetActive(false);
+        //         card.CheckUnlocked();
+        //         OnCardUnlock?.Invoke();
+        //     }
+        // }
     }
 }

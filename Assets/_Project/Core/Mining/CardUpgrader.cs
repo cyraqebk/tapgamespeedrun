@@ -14,17 +14,13 @@ namespace Core.Mining
         public event CardUpgrade OnCardUpgrade;  // Событие прокачки майнера
         public void Upgrade()   
         {
-            if (softCurrency.CurrentAmount >= PriceToUpgrade)
-            {
-                softCurrency.CurrentAmount -= PriceToUpgrade;
-                card.Level++;
-                PriceToUpgrade += (int)card.cardConfig.PricePerLevel.Evaluate(card.Level);
-                OnCardUpgrade?.Invoke();
-            }   
-            else
-            {
-                Debug.LogError("");
-            }
+            // if (softCurrency.CurrentAmount >= PriceToUpgrade)
+            // {
+            //     softCurrency.CurrentAmount -= PriceToUpgrade;
+            //     card.Level++;
+            //     PriceToUpgrade += (int)card.cardConfig.PricePerLevel.Evaluate(card.Level);
+            //     OnCardUpgrade?.Invoke();
+            // }   
 
         }
     }

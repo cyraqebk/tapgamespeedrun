@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yourcompany.yourgame">
+    
+    <application>
+        <!-- Здесь будут другие настройки приложения -->
+    </application>
+
+    <!-- Запросы разрешений на чтение и запись -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+                 android:maxSdkVersion="28" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+                 android:maxSdkVersion="28" />
+
+</manifest>
