@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 60322d6ebfb8a4b40a8e20114c5ba3d4
+guid: 262ade4f88dc22a4bbcbac4b335b3b3f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7968623061967670400
-    second: 1714143075_new_preview_cog-icon-3409856545_0
+      213: -2123048227585799722
+    second: Upward-Curved-Arrow-PNG-Image-Background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1714143075_new_preview_cog-icon-3409856545_0
+      name: Upward-Curved-Arrow-PNG-Image-Background_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 7
-        width: 1016
-        height: 1014
+        x: 5
+        y: 11
+        width: 913
+        height: 570
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08c819d847c369e60800000000000000
-      internalID: 7968623061967670400
+      spriteID: 6d9c9b9a2ea6982e0800000000000000
+      internalID: -2123048227585799722
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      1714143075_new_preview_cog-icon-3409856545_0: 7968623061967670400
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
