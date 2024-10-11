@@ -2,73 +2,59 @@ using UnityEngine;
 using System.Collections;
 using System;
 using Core.Json;
+using System.Threading.Tasks;
 
 
 namespace Core.Wallet
 {
     public class PassiveIncome : MonoBehaviour
     {
-        [SerializeField] private GameInitializer gameInitializer;
-        [SerializeField] private int MaximumValueWallet= 1000 ;
-        [SerializeField] private float MiningSpeed = 1;
-        [SerializeField] private WalletAmount walletAmount;
-        private DateTime TimeWallet;
-        private DateTime NewTimeWallet;
-        public int MaximumValueWalletProperty
+        [SerializeField] private GameInitializer _gameInitializer;
+        [SerializeField] private int _maximumValueWallet= 1000 ;
+        [SerializeField] private float _miningSpeed = 1;
+        public float MiningSpeed => _miningSpeed;
+        [SerializeField] public WalletAmount _walletAmount;
+        public int MaximumValueWallet => _maximumValueWallet;
+        private float _speedmls;
+        private DateTime _timeWallet;
+        private DateTime _newTimeWallet;
+        private void Start()
         {
-            get=>MaximumValueWallet;
-            set=>MaximumValueWallet = value;
+            StartCoroutine(AddingToWallet());
         }
-        public float MiningSpeedProperty
+
+        public IEnumerator AddingToWallet()
         {
-            get=>MiningSpeed;
-            set=>MiningSpeed = value;
-        }
-        public IEnumerator RepeatEverySecond()
-        {
-            while (true)
+            while (_walletAmount.WalletField.Value < _maximumValueWallet)
             {
-                if (walletAmount.WalletAmountProperty + MiningSpeed < MaximumValueWallet)
+                float speedmls = _miningSpeed * (100f / 1000f);
+                _walletAmount.CurrencyIncrease(speedmls);
+                if (_walletAmount.WalletField.Value > _maximumValueWallet)
                 {
-                    walletAmount.WalletAmountProperty += MiningSpeed;
+                    _walletAmount.WalletField.Value = _maximumValueWallet;
                 }
-                else
-                {
-                    walletAmount.WalletAmountProperty = MaximumValueWallet;
-                    break;
-                }
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
-        public void Start()
+        public void GetMaximumVolume(int meaning)
         {
-            StartCoroutine(RepeatEverySecond());
-            if (Memory.saves.ContainsKey("MaximumValueWallet"))
+            _maximumValueWallet = meaning;
+        }
+
+        public void GetSpeed(float meaning)
+        {
+            _miningSpeed = meaning;
+        }
+        public bool PassivImpruv(float meaning)
+        {
+            if (_walletAmount.WalletField.Value + meaning >1000)
             {
-                var loadedMaximumValueWallet  = new Load<int>("MaximumValueWallet");
-                if (loadedMaximumValueWallet!=0)
-                {
-                    MaximumValueWallet = loadedMaximumValueWallet;
-                }
+                return false;
             }
-            if (Memory.saves.ContainsKey("MiningSpeed"))
+            else
             {
-                var loadedMiningSpeed = new Load<float>("MiningSpeed");
-                if (loadedMiningSpeed!=0)
-                {
-                    MiningSpeed = loadedMiningSpeed;
-                }
-            }
-            if (Memory.saves.ContainsKey("TimeWallet"))
-            {
-                var loadedTimeWallet = new Load<DateTime>("TimeWallet");
-                TimeWallet = loadedTimeWallet;
-                NewTimeWallet = DateTime.Now;
-                TimeSpan timeDifference = NewTimeWallet - TimeWallet;
-                double secondsDifference = timeDifference.TotalSeconds;
-                walletAmount.WalletAmountProperty += (int)secondsDifference * MiningSpeed;
+                return true;
             }
         }
-       
     }
 }

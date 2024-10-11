@@ -15,66 +15,79 @@ namespace Core.Wallet
     {
         [SerializeField] private GameInitializer gameInitializer;
         [SerializeField] private SoftCurrency softCurrency;
-        [SerializeField] private AnimationCurve MiningSpeedWeapon;
-        [SerializeField] private AnimationCurve CapacityWeapon;
-        [SerializeField] private AnimationCurve PriceWeapon;
-        public delegate void ChangedWallet();
-        public event ChangedWallet Changed;
-        [SerializeField] private int levelWeapon = 1;  
-        public int levelWeaponProperty
+        [SerializeField] private AnimationCurve _miningSpeedWeapon;
+        [SerializeField] private AnimationCurve _CapacityWeapon;
+        [SerializeField] private AnimationCurve _priceWeapon;
+        [SerializeField] private ReactiveField<int> _lvl = new ReactiveField<int>(1);
+        public ReactiveField<int> Lvl => _lvl;
+        [SerializeField] public PassiveIncome passiveIncome;
+        [SerializeField] private int _maxLevelWeapon = 100;
+        private DateTime startTime;
+        private DateTime endTime;
+
+        private void Start()
         {
-            get=>levelWeapon;
-            set=>levelWeapon = value;
-        }
-        [SerializeField] private PassiveIncome passiveIncome;
-        [SerializeField] private int MaxLevelWeapon = 100;
-        [SerializeField] private TMP_Text _lvlText;
-        [SerializeField] private TMP_Text _speedText;
-        [SerializeField] private ReactiveField<string> WeaponLevelText = new ReactiveField<string>("");
-        public string WeaponLevelTextProperty
-        {
-            get=>WeaponLevelText.Value;
-            set=>WeaponLevelText.Value = value;
-        }
-        public ReactiveField<string> WeaponLevelTextField => WeaponLevelText;
-        private void Start() 
-        {
-            if (Memory.saves.ContainsKey("LevelWeapon"))
+            _lvl.Value = SaveManager.Load("_lvl", 1);
+            passiveIncome.GetSpeed(SaveManager.Load("_speedWallet", 1f));
+            passiveIncome.GetMaximumVolume(SaveManager.Load("_waximumValueWallet", 1000));
+            gameInitializer.SubscribeToStopGame(OnStopGame);
+            startTime = SaveManager.Load("_timeWallet", DateTime.Now);
+            endTime = DateTime.Now;
+            TimeSpan timeDifference = endTime - startTime;
+            double seconds = timeDifference.TotalSeconds;
+            if (passiveIncome.PassivImpruv((float)seconds * passiveIncome.MiningSpeed))
             {
-                var loadedlevelWeapon  = new Load<int>("LevelWeapon");
-                if (loadedlevelWeapon!=0)
-                {
-                    levelWeapon = loadedlevelWeapon;
-                }
+                passiveIncome._walletAmount.CurrencyIncrease((float)seconds * passiveIncome.MiningSpeed);
             }
+            else
+            {
+                passiveIncome._walletAmount.CurrencyIncrease(passiveIncome.MaximumValueWallet - passiveIncome._walletAmount.WalletField.Value);
+            }
+
+        }
+
+        private void OnDestroy()
+        {
+            if (gameInitializer != null)
+            {
+                gameInitializer.UnsubscribeFromStopGame(OnStopGame);
+            }
+        }
+
+        private void OnStopGame()
+        {
+            startTime = DateTime.Now;
+            SaveManager.Save("_timeWallet", startTime);
+            SaveManager.Save("_lvl", _lvl.Value);
+            SaveManager.Save("_speedWallet", passiveIncome.MiningSpeed);
+            SaveManager.Save("_waximumValueWallet", passiveIncome.MaximumValueWallet);
         }
         
 
         public int GettingPriceWeapon(int level)
         {
-            float price = PriceWeapon.Evaluate(level+1);
+            float price = _priceWeapon.Evaluate(level);
             return Mathf.CeilToInt(price);
         }
         public float GettingMiningSpeedWeapon(int level)
         {
-            float speed = MiningSpeedWeapon.Evaluate(level+1);
+            float speed = _miningSpeedWeapon.Evaluate(level);
             return speed;
         }
         public int GettingCapacityWeapon(int level)
         {
-            float capacity = CapacityWeapon.Evaluate(level+1);
+            float capacity = _CapacityWeapon.Evaluate(level);
             return Mathf.CeilToInt(capacity);
         }
-        // public void UpgradeLevel()
-        // {
-        //     if (levelWeapon < MaxLevelWeapon &&  GettingPriceWeapon(levelWeapon) <= softCurrency.CurrentAmount)
-        //     {
-        //         softCurrency.CurrentAmount -= GettingPriceWeapon(levelWeapon);
-        //         passiveIncome.MaximumValueWalletProperty = GettingCapacityWeapon(levelWeapon);
-        //         passiveIncome.MiningSpeedProperty = GettingMiningSpeedWeapon(levelWeapon);
-        //         levelWeapon++;  
-        //         Changed?.Invoke();
-        //     }
-        // }
+        public void UpgradeLevel()
+        {
+            if (_lvl.Value < _maxLevelWeapon &&  GettingPriceWeapon(_lvl.Value+1) <= softCurrency.CurrencyField.Value)
+            {
+                _lvl.Value++;  
+                softCurrency.SubtractingValue(GettingPriceWeapon(_lvl.Value));
+                passiveIncome.GetMaximumVolume(GettingCapacityWeapon(_lvl.Value));
+                passiveIncome.GetSpeed(GettingMiningSpeedWeapon(_lvl.Value));
+            }
+        }
     }
 }

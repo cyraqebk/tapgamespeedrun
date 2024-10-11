@@ -12,7 +12,7 @@ namespace UI.Tappings
         [SerializeField] private LevelUpgrade levelUpgrade;
         public void OnPointerClick(PointerEventData eventData)
         {
-            settings.vibrationpusk();
+            settings.VibrationPulse();
             softCurrency.CurrencyIncrease(levelUpgrade.GetTheSpeed());
         }
     }

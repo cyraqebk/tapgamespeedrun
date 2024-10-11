@@ -99,6 +99,10 @@ MonoBehaviour:
     m_Key: Ded
     m_Metadata:
       m_Items: []
+  - m_Id: 1050981526298624
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

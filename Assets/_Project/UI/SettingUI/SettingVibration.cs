@@ -9,49 +9,43 @@ namespace UI.Setting
 {
     public class SettingVibration : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private LocalizedString _localizationString;
-        [SerializeField] private Settings settings;
-        [SerializeField] private TMP_Text vibration;
+        [SerializeField] private LocalizedString _localizationString; // Если используете локализацию
+        [SerializeField] private Settings settings; // Ссылка на настройки
+        [SerializeField] private TMP_Text vibration; // Текст для отображения состояния вибрации
+        [SerializeField] private ControlMenu controlMenu; // Ссылка на класс управления меню
 
         private void Start() 
         {
-            // Инициализация текста в зависимости от текущего языка
-            UpdateVibrationText();
-            // Подписка на событие изменения языка
-            LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+            UpdateVibrationText(); // Обновляем текст при старте
+            LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged; // Подписка на изменения языка
         }
 
         private void OnDestroy()
         {
-            // Отписка от события при уничтожении объекта
-            LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
+            LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged; // Отписка от изменений языка
         }
 
         private void OnLocaleChanged(Locale locale)
         {
-            // Обновляем текст при изменении языка
-            UpdateVibrationText();
+            UpdateVibrationText(); // Обновляем текст при изменении языка
         }
 
         private void UpdateVibrationText()
         {
-            // Получаем текущую локализацию
-            var currentLocale = LocalizationSettings.SelectedLocale;
-            // Устанавливаем текст в зависимости от локализации
+            var currentLocale = LocalizationSettings.SelectedLocale; // Получаем текущую локаль
             if (currentLocale.Identifier.Code == "ru")
             {
-                vibration.text = settings.vbr ? "Да" : "Нет";
+                vibration.text = settings.vbr ? "Да" : "Нет"; // Текст на русском
             }
             else
             {
-                vibration.text = settings.vbr ? "Yes" : "No";
+                vibration.text = settings.vbr ? "Yes" : "No"; // Текст на английском
             }
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            // Переключаем состояние вибрации
-            settings.vbr = !settings.vbr;
+            controlMenu.ControlVbr(); // Переключаем состояние вибрации
             UpdateVibrationText(); // Обновляем текст после изменения
         }
     }

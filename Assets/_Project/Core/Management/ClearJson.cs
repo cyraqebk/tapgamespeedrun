@@ -17,7 +17,6 @@ namespace Core.Management
         [SerializeField] private LevelUpgrade levelUpgrade;
         [SerializeField] private PassiveIncome passiveIncome;
         [SerializeField] private WalletAmount walletAmount;
-        [SerializeField] private LocaliText localiText;
         [SerializeField] private ImprovingBarWallet improvingBarWallet;
         [SerializeField] private GameInitializer gameInitializer;
         public static void ClearSaves()

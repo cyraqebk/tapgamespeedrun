@@ -12,9 +12,10 @@ namespace Core.Tappings
         public ReactiveField<int> CurrencyField => _currentCurrency;
         private void Start()
         {
+            _currentCurrency.Value = SaveManager.Load("_currentCurrency", 0);
             _gameInitializer.SubscribeToStopGame(OnStopGame);
-            LoadPlayerData();
         }
+
         private void OnDestroy()
         {
             if (_gameInitializer != null)
@@ -22,23 +23,10 @@ namespace Core.Tappings
                 _gameInitializer.UnsubscribeFromStopGame(OnStopGame);
             }
         }
+
         private void OnStopGame()
         {
-            SavePlayerData();
-        }
-        private void SavePlayerData()
-        {
-            Debug.Log("Save " + _currentCurrency.Value);
-            new Save("_currentCurrency", _currentCurrency.Value);
-        }
-        private void LoadPlayerData()
-        {
-            Load<int> loadData = new Load<int>("_currentCurrency");
-            int loadedCurrency = loadData;
-            if (loadedCurrency != 0)
-            {
-                _currentCurrency.Value = loadedCurrency;
-            }
+            SaveManager.Save("_currentCurrency", _currentCurrency.Value);
         }
         
         public void CurrencyIncrease(int meaning)

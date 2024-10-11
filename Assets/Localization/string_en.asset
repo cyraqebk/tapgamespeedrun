@@ -107,6 +107,10 @@ MonoBehaviour:
     m_Localized: ded
     m_Metadata:
       m_Items: []
+  - m_Id: 1050981526298624
+    m_Localized: language
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

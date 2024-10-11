@@ -14,6 +14,7 @@ namespace Core.Management
         public CanvasGroup settingsCanvasGroup;
         public CanvasGroup managementCanvasGroup;
         public CanvasGroup miningCanvasGroup;
+        
         private void Awake()
         {
             walletCanvasGroup = Wallet.GetComponent<CanvasGroup>();

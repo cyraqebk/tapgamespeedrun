@@ -8,6 +8,11 @@ namespace Core.Management
         [SerializeField] private StartGame startGame;
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (startGame.miningCanvasGroup == null)
+            {
+                Debug.LogError("miningCanvasGroup is null");
+                return;
+            }
             startGame.Off(startGame.walletCanvasGroup);
             startGame.Off(startGame.tappingCanvasGroup);
             startGame.Off(startGame.settingsCanvasGroup);

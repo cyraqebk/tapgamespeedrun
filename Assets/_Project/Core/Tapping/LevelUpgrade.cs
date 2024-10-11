@@ -16,6 +16,24 @@ namespace Core.Tappings
         [SerializeField] private ReactiveField<int> _currenLevel = new ReactiveField<int>(1);
         public ReactiveField<int> CurrenLevel => _currenLevel;
         [SerializeField] private int _price = 10;
+        private void Start()
+        {
+            _currenLevel.Value = SaveManager.Load("_currenLevel", 1);
+            _gameInitializer.SubscribeToStopGame(OnStopGame);
+        }
+
+        private void OnDestroy()
+        {
+            if (_gameInitializer != null)
+            {
+                _gameInitializer.UnsubscribeFromStopGame(OnStopGame);
+            }
+        }
+
+        private void OnStopGame()
+        {
+            SaveManager.Save("_currenLevel", _currenLevel.Value);
+        }
         public int GetThePrice()
         {
             float normalizedLevel = (float)_currenLevel.Value;

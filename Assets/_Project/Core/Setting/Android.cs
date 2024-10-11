@@ -9,13 +9,11 @@ namespace Core.Setting
     {
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
         {
-            // Запрос разрешения на запись
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
         }
 
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
         {
-            // Запрос разрешения на чтение
             Permission.RequestUserPermission(Permission.ExternalStorageRead);
         }
     }

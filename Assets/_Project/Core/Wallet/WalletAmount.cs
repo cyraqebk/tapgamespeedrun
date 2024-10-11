@@ -7,24 +7,37 @@ namespace Core.Wallet
 {
     public class WalletAmount : MonoBehaviour
     {
-        [SerializeField] private GameInitializer gameInitializer;
-        [SerializeField] private ReactiveField<float> WalletCurrency = new ReactiveField<float>(0);
-        public float WalletAmountProperty
+        [SerializeField] private GameInitializer _gameInitializer;
+        [SerializeField] private ReactiveField<float> _walletCurrency = new ReactiveField<float>(0);
+        public ReactiveField<float> WalletField => _walletCurrency;
+        public void CurrencyIncrease(float meaning)
         {
-            get=>WalletCurrency.Value;
-            set=>WalletCurrency.Value = value;
+            _walletCurrency.Value += meaning;
         }
-        public ReactiveField<float> WalletField => WalletCurrency;
-        private void Start() 
+        public void SubtractingValue(float meaning)
         {
-            if (Memory.saves.ContainsKey("WalletAmountProperty"))
+            if ((_walletCurrency.Value - meaning) >= 0)
             {
-                var loadedWalletAmountProperty  = new Load<float>("WalletAmountProperty");
-                if (loadedWalletAmountProperty!=0)
-                {
-                    WalletAmountProperty = loadedWalletAmountProperty;
-                }
+                _walletCurrency.Value -= meaning;
             }
+        }
+        private void Start()
+        {
+            _walletCurrency.Value = SaveManager.Load("_walletCurrency", 0f);
+            _gameInitializer.SubscribeToStopGame(OnStopGame);
+        }
+
+        private void OnDestroy()
+        {
+            if (_gameInitializer != null)
+            {
+                _gameInitializer.UnsubscribeFromStopGame(OnStopGame);
+            }
+        }
+
+        private void OnStopGame()
+        {
+            SaveManager.Save("_walletCurrency", _walletCurrency.Value);
         }
         
     }

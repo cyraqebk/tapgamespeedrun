@@ -13,7 +13,7 @@ namespace Core.Setting
         private void OnEnable()
         {
             _localizationString.StringChanged += OnStringChange;
-            UpdateText(); // Вызываем обновление текста при активации
+            UpdateText();
         }
 
         private void OnDisable()
@@ -23,7 +23,6 @@ namespace Core.Setting
 
         private void UpdateText()
         {
-            // Проверка на наличие локализованного значения перед его использованием
             if (_localizationString != null)
             {
                 string localizedValue = _localizationString.GetLocalizedString();

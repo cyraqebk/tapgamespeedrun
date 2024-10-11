@@ -7,22 +7,22 @@ namespace UI.Wallet
 {
     public class WalletBar : MonoBehaviour
     {
-        [SerializeField] private Image Bar;
-        [SerializeField] private PassiveIncome passiveIncome;
-        [SerializeField] private WalletAmount walletAmount;
+        [SerializeField] private Image _bar;
+        [SerializeField] private PassiveIncome _passiveIncome;
+        [SerializeField] private WalletAmount _walletAmount;
         private void OnEnable()
         {
-            walletAmount.WalletField.Changed += SetFillAmount;
-            Bar.fillAmount = Mathf.Clamp01(walletAmount.WalletAmountProperty/passiveIncome.MaximumValueWalletProperty);
+            _walletAmount.WalletField.Changed += SetFillAmount;
+            _bar.fillAmount = (int)Mathf.Floor(_walletAmount.WalletField.Value/_passiveIncome.MaximumValueWallet);
         }
 
         private void OnDisable()
         {
-            walletAmount.WalletField.Changed -= SetFillAmount;
+            _walletAmount.WalletField.Changed -= SetFillAmount;
         }
         public void SetFillAmount(float oldValue, float newValue)
         {
-            Bar.fillAmount = walletAmount.WalletAmountProperty/passiveIncome.MaximumValueWalletProperty;
+            _bar.fillAmount = _walletAmount.WalletField.Value/_passiveIncome.MaximumValueWallet;
         }
     }
 }

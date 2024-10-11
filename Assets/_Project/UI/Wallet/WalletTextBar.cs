@@ -8,26 +8,25 @@ namespace UI.Wallet
 {
     public class WalletTextBar : MonoBehaviour
     {
-        [SerializeField] private WalletAmount walletAmount;
-        [SerializeField] private TMP_Text TextBar;
-        [SerializeField] private ImprovingBarWallet improvingBarWallet;
-        [SerializeField] private int capacity;
+        [SerializeField] private WalletAmount _walletAmount;
+        [SerializeField] private TMP_Text _extBar;
+        [SerializeField] private ImprovingBarWallet _improvingBarWallet;
+        [SerializeField] private PassiveIncome _passiveIncome;
 
         
         private void OnEnable()
         {
-            walletAmount.WalletField.Changed += SetFillAmount;
-            TextBar.text=Mathf.FloorToInt(walletAmount.WalletAmountProperty).ToString();
+            _walletAmount.WalletField.Changed += SetFillAmount;
+            _extBar.text=Mathf.FloorToInt(_walletAmount.WalletField.Value).ToString()+" / "+_passiveIncome.MaximumValueWallet;
         }
 
         private void OnDisable()
         {
-            walletAmount.WalletField.Changed -= SetFillAmount;
+            _walletAmount.WalletField.Changed -= SetFillAmount;
         }
         public void SetFillAmount(float oldValue, float newValue)
         {
-            capacity=improvingBarWallet.GettingCapacityWeapon(improvingBarWallet.levelWeaponProperty-1);
-            TextBar.text=Mathf.FloorToInt(walletAmount.WalletAmountProperty).ToString()+" / "+capacity;
+            _extBar.text=Mathf.FloorToInt(_walletAmount.WalletField.Value).ToString()+" / "+_passiveIncome.MaximumValueWallet;
         }
     }
 }

@@ -51,6 +51,5 @@ public class GameInitializer : MonoBehaviour
     {
         StopGame?.Invoke(); // Вызов события сохранения данных у всех подписчиков
         Memory.SaveToFile(); // Централизованное сохранение в файл
-        Debug.Log("[GameInitializer]: Game data saved.");
     }
 }

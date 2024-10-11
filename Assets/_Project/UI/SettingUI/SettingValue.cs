@@ -9,57 +9,42 @@ namespace UI.Setting
 {
     public class SettingValue : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private Settings settings;
-        [SerializeField] private TMP_Text value;
+        [SerializeField] private Settings settings; // Ссылка на настройки
+        [SerializeField] private TMP_Text value; // Текст для отображения состояния звука
+        [SerializeField] private ControlMenu controlMenu; // Ссылка на класс управления меню
 
         private void Start() 
         {
-            // Инициализация текста в зависимости от текущего языка
-            UpdateValueText();
-            // Подписка на событие изменения языка
-            LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+            UpdateValueText(); // Обновляем текст при старте
+            LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged; // Подписка на изменения языка
         }
 
         private void OnDestroy()
         {
-            // Отписка от события при уничтожении объекта
-            LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
+            LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged; // Отписка от изменений языка
         }
 
         private void OnLocaleChanged(Locale locale)
         {
-            // Обновляем текст при изменении языка
-            UpdateValueText();
+            UpdateValueText(); // Обновляем текст при изменении языка
         }
 
         private void UpdateValueText()
         {
-            // Получаем текущую локализацию
-            var currentLocale = LocalizationSettings.SelectedLocale;
-            // Устанавливаем текст в зависимости от локализации
+            var currentLocale = LocalizationSettings.SelectedLocale; // Получаем текущую локаль
             if (currentLocale.Identifier.Code == "ru")
             {
-                value.text = settings.vbr ? "Да" : "Нет";
+                value.text = settings.sound ? "Да" : "Нет"; // Текст на русском
             }
             else
             {
-                value.text = settings.vbr ? "Yes" : "No";
+                value.text = settings.sound ? "Yes" : "No"; // Текст на английском
             }
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            // Переключаем состояние звука
-            if (settings.vbr)
-            {
-                settings.MuteSound();
-                settings.vbr = false;
-            }
-            else
-            {
-                settings.UnmuteSound();
-                settings.vbr = true;
-            }
+            controlMenu.ControlsSound(); // Переключаем состояние звука
             UpdateValueText(); // Обновляем текст после изменения
         }
     }
