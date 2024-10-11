@@ -13,7 +13,7 @@ namespace UI.Tappings
         public void OnPointerClick(PointerEventData eventData)
         {
             settings.VibrationPulse();
-            softCurrency.CurrencyIncrease(levelUpgrade.GetTheSpeed());
+            softCurrency.CurrencyIncrease(levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value));
         }
     }
 }

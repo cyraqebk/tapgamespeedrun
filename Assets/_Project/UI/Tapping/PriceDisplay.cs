@@ -8,6 +8,7 @@ namespace UI.Tappings
     {
         [SerializeField] private TMP_Text priceText;
         [SerializeField] private TMP_Text lvl;
+        [SerializeField] private TMP_Text bonus;
         [SerializeField] private LevelUpgrade levelUpgrade;
 
         private void OnEnable()
@@ -15,6 +16,7 @@ namespace UI.Tappings
             levelUpgrade.CurrenLevel.Changed += OnPriceChanged;
             priceText.text = levelUpgrade.GetThePrice().ToString();
             lvl.text = levelUpgrade.CurrenLevel.Value.ToString();
+            bonus.text = (levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value+1) - levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value)).ToString();
         }
 
         private void OnDisable()
@@ -26,6 +28,7 @@ namespace UI.Tappings
         {
             priceText.text = levelUpgrade.GetThePrice().ToString();
             lvl.text = levelUpgrade.CurrenLevel.Value.ToString();
+            bonus.text = (levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value+1) - levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value)).ToString();
         }
     }
 }

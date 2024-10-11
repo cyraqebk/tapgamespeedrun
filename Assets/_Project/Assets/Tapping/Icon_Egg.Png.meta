@@ -129,9 +129,9 @@ TextureImporter:
       name: Icon_Egg_0
       rect:
         serializedVersion: 2
-        x: 67
-        y: 33
-        width: 377
+        x: 68
+        y: 32
+        width: 376
         height: 446
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7889716aec7492a4aa5e255dee70d425
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Icon_Egg_0: 4463783315753075582
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

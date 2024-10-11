@@ -40,9 +40,9 @@ namespace Core.Tappings
             float price = _priceCurve.Evaluate(normalizedLevel);
             return Mathf.CeilToInt(price);
         }
-        public int GetTheSpeed()
+        public int GetTheSpeed(int meanin)
         {
-            float normalizedLevel = (float)_currenLevel.Value;
+            float normalizedLevel = (float)meanin;
             float speed = _buffCurve.Evaluate(normalizedLevel);
             return Mathf.CeilToInt(speed);
         }
@@ -53,7 +53,7 @@ namespace Core.Tappings
                 _softCurrency.SubtractingValue(GetThePrice());
                 _currenLevel.Value += 1;
                 _price = GetThePrice();
-                _speed = GetTheSpeed();
+                _speed = GetTheSpeed(_currenLevel.Value);
             }
         }
         

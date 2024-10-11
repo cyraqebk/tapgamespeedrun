@@ -15,15 +15,13 @@ namespace Core.Setting
         [SerializeField] private ReactiveField<bool> loge = new ReactiveField<bool>(true);
         public ReactiveField<bool> Loge => loge;
 
-
         private void Start()
         {
             currentLocale = LocalizationSettings.SelectedLocale?.Identifier.Code ?? "ru";
-            settings.vbr = SaveManager.Load("vbr", true);
-            settings.sound = SaveManager.Load("sound", true);
-            
-            // Загрузка переменной loge
-            loge.Value = SaveManager.Load("loge", true);
+            settings.vbr = SaveManager.Load("vbr", false);
+            settings.sound = SaveManager.Load("sound", false);
+            loge.Value = SaveManager.Load("loge", false);
+            Debug.Log(" звук " + settings.sound + " язык " + loge.Value + " Вибрация " + settings.vbr);
 
             // Установка языка в зависимости от значения loge
             if (!loge.Value) // Если loge равно false

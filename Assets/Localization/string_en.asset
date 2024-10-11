@@ -64,7 +64,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 384180538728448
-    m_Localized: increasing the speed
+    m_Localized: speed
     m_Metadata:
       m_Items: []
   - m_Id: 384552049205248
@@ -109,6 +109,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1050981526298624
     m_Localized: language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1392506644254720
+    m_Localized: +
     m_Metadata:
       m_Items: []
   references:
