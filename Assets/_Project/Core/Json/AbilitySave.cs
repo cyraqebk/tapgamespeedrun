@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO; 
+using System.Collections.Generic;
 
 namespace Core.Json
 {
@@ -20,7 +21,15 @@ namespace Core.Json
         public static T Load<T>(string key, T defaultValue = default)
         {
             Load<T> loadData = new Load<T>(key);
-            return loadData ?? defaultValue; // Возвращаем загруженное значение или значение по умолчанию
+
+            // Если данных нет, то сразу сохраняем значение по умолчанию
+            if (EqualityComparer<T>.Default.Equals(loadData, default(T)))
+            {
+                Save(key, defaultValue);  // Сохраняем значение по умолчанию
+                return defaultValue;
+            }
+
+            return loadData;
         }
     }
 }
