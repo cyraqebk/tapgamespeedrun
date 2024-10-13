@@ -9,10 +9,12 @@ namespace Core.Management
         [SerializeField] private StartGame startGame;
         [SerializeField] private AnimationButton animationButton;
         private Vector3 originalScale;
+
         private void Start() 
         {
             originalScale = transform.localScale;
         }
+
         public void OnPointerClick(PointerEventData eventData)
         {
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));

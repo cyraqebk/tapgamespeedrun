@@ -52,7 +52,6 @@ public class GameInitializer : MonoBehaviour
     // Метод для вызова сохранения данных
     private void SaveGame()
     {
-        Debug.Log("Save");
         StopGame?.Invoke(); // Вызов события сохранения данных у всех подписчиков
         Memory.SaveToFile(); // Централизованное сохранение в файл
     }

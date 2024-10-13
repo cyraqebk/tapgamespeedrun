@@ -1,0 +1,1 @@
+B:\ProgectPlay\klicker\tapgamespeedrun\Library\PramData\AndroidApplicationController\Cache\com.OIQ.Eggame\gradle-project\unityLibrary\build\intermediates\cxx\Debug\5x6d4s10\obj\arm64-v8a

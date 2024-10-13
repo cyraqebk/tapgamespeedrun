@@ -63,7 +63,6 @@ namespace Core.Wallet
                 {
                     passiveIncome._walletAmount.CurrencyIncrease(passiveIncome.MaximumValueWallet - passiveIncome._walletAmount.WalletField.Value);
                 }
-                Debug.Log("Приложение развернулось обратно.");
             }
         }
         private void OnDestroy()

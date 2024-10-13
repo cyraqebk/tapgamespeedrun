@@ -19,6 +19,8 @@ namespace Core.Json
 
         public static void LoadFromFile()
         {
+            Debug.Log($"[MEMORY]: Attempting to load save file from {saveFilePath}");
+            
             if (!File.Exists(saveFilePath))
             {
                 Debug.LogWarning($"[MEMORY]: Save file not found at {saveFilePath}. A new one will be created on save.");
@@ -29,6 +31,7 @@ namespace Core.Json
             try
             {
                 string json = File.ReadAllText(saveFilePath);
+                Debug.Log($"[MEMORY]: Raw save data: {json}");
                 saves = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
                 Debug.Log("[MEMORY]: Save data loaded successfully.");
             }

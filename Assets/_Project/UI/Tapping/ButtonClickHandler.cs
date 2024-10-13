@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using Core.Tappings;
 using Core.Setting;
 using System.Collections;
+using UI.Animation;
 
 namespace UI.Tappings
 {
@@ -11,12 +12,13 @@ namespace UI.Tappings
         [SerializeField] private SoftCurrency softCurrency;
         [SerializeField] private Settings settings;
         [SerializeField] private LevelUpgrade levelUpgrade;
+        [SerializeField] private ObjectPool textPool; // Пул для текстовых объектов
+        [SerializeField] private Canvas canvas; // Canvas для UI элементов
 
-        private Vector3 originalScale; // Хранит исходный размер кнопки
+        private Vector3 originalScale;
 
         private void Start()
         {
-            // Сохраняем исходный размер кнопки
             originalScale = transform.localScale;
         }
 
@@ -24,19 +26,36 @@ namespace UI.Tappings
         {
             if (Input.touchCount <= 3)
             {
-                softCurrency.CurrencyIncrease(levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value));
+                int addedValue = levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value);
+                softCurrency.CurrencyIncrease(addedValue);
+
+                // Показываем текст на месте клика
+                ShowFloatingText("+" + addedValue.ToString(), eventData.position);
+
                 StartCoroutine(AnimateButton());
             }
         }
 
+        private void ShowFloatingText(string text, Vector3 clickPosition)
+        {
+            // Получаем объект текста из пула
+            GameObject floatingTextObj = textPool.GetObject();
+
+            // Конвертируем позицию экрана в координаты Canvas
+            Vector2 localPoint;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, clickPosition, canvas.worldCamera, out localPoint);
+
+            // Устанавливаем текст и анимацию
+            floatingTextObj.GetComponent<FloatingText>().Show(text, canvas.transform.TransformPoint(localPoint));
+        }
+
         private IEnumerator AnimateButton()
         {
-            Vector3 targetScaleSmall = originalScale * 0.8f; // Уменьшаем до 60% от оригинала
-            Vector3 targetScaleLarge = originalScale * 1.15f; // Увеличиваем до 110% от оригинала
-            float duration = 0.1f; // Длительность каждой фазы анимации
+            Vector3 targetScaleSmall = originalScale * 0.8f;
+            Vector3 targetScaleLarge = originalScale * 1.15f;
+            float duration = 0.1f;
             float elapsed = 0f;
 
-            // Фаза 1: Плавно уменьшаем размер
             while (elapsed < duration)
             {
                 transform.localScale = Vector3.Lerp(originalScale, targetScaleSmall, elapsed / duration);
@@ -44,10 +63,8 @@ namespace UI.Tappings
                 yield return null;
             }
 
-            // Устанавливаем уменьшенный размер
             transform.localScale = targetScaleSmall;
 
-            // Фаза 2: Плавно увеличиваем до большего размера
             elapsed = 0f;
             while (elapsed < duration)
             {
@@ -56,10 +73,8 @@ namespace UI.Tappings
                 yield return null;
             }
 
-            // Устанавливаем увеличенный размер
             transform.localScale = targetScaleLarge;
 
-            // Фаза 3: Плавно возвращаемся к оригинальному размеру
             elapsed = 0f;
             while (elapsed < duration)
             {
@@ -68,7 +83,6 @@ namespace UI.Tappings
                 yield return null;
             }
 
-            // Устанавливаем окончательный размер (нормальный)
             transform.localScale = originalScale;
         }
     }
