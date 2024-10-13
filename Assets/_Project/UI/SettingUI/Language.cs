@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using Core.ReactiveFields;
+using UI.Animation;
 
 namespace UI.SettingUI
 {
@@ -13,6 +14,8 @@ namespace UI.SettingUI
         [SerializeField] private Settings settings;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private ControlMenu controlMenu;
+        [SerializeField] private AnimationButton animationButton;
+        private Vector3 originalScale;
 
         private void OnEnable()
         {
@@ -33,6 +36,7 @@ namespace UI.SettingUI
         }
         private void Start() 
         {
+            originalScale = transform.localScale;
             UpdateValueText();
             LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
         }
@@ -66,6 +70,7 @@ namespace UI.SettingUI
         public void OnPointerClick(PointerEventData eventData)
         {
             controlMenu.Loge.Value = !controlMenu.Loge.Value; // Переключаем значение
+            StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             UpdateValueText(); // Обновляем текст после изменения состояния
         }
     }

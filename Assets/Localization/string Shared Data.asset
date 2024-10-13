@@ -107,6 +107,10 @@ MonoBehaviour:
     m_Key: Bonus
     m_Metadata:
       m_Items: []
+  - m_Id: 1536638174519296
+    m_Key: For the tap
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

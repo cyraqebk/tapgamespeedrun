@@ -2,12 +2,14 @@ using UnityEngine;
 using Core.ReactiveFields;
 using Core.Json;
 using System.Collections;
+using Core.Setting;
 
 namespace Core.Tappings
 {
     public class LevelUpgrade : MonoBehaviour
     {
         [SerializeField] private GameInitializer _gameInitializer;
+        [SerializeField] private Settings settings;
         [SerializeField] private SoftCurrency _softCurrency;
         [SerializeField] private AnimationCurve _priceCurve;
         [SerializeField] private AnimationCurve _buffCurve;
@@ -50,6 +52,7 @@ namespace Core.Tappings
         {
             if (_softCurrency.CurrencyField.Value >= GetThePrice())
             {
+                settings.VibrationPulse();
                 _softCurrency.SubtractingValue(GetThePrice());
                 _currenLevel.Value += 1;
                 _price = GetThePrice();

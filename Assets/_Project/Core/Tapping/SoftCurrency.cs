@@ -8,8 +8,8 @@ namespace Core.Tappings
     public class SoftCurrency : MonoBehaviour
     {
         [SerializeField] private GameInitializer _gameInitializer;
-        [SerializeField] private ReactiveField<int> _currentCurrency = new ReactiveField<int>(0);
-        public ReactiveField<int> CurrencyField => _currentCurrency;
+        [SerializeField] private ReactiveField<long> _currentCurrency = new ReactiveField<long>(0);
+        public ReactiveField<long> CurrencyField => _currentCurrency;
         private void Start()
         {
             _currentCurrency.Value = SaveManager.Load("_currentCurrency", 0);

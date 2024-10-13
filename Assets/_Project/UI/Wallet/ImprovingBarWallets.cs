@@ -6,6 +6,7 @@ using Core.Tappings;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.SmartFormat.Utilities;
+using UI.Animation;
 
 namespace UI.Wallet
 {
@@ -17,7 +18,12 @@ namespace UI.Wallet
         [SerializeField] private TMP_Text _priceText;
         [SerializeField] private TMP_Text _newspeed;
         [SerializeField] private TMP_Text _newvolume;
-
+        [SerializeField] private AnimationButton animationButton;
+        private Vector3 originalScale;
+        private void Start() 
+        {
+            originalScale = transform.localScale;
+        }
         private void OnEnable()
         {
             improvingBarWallet.Lvl.Changed += CurrencyText;
@@ -38,6 +44,7 @@ namespace UI.Wallet
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             improvingBarWallet.UpgradeLevel();
             LvlAndSpeed();
             NewFeatures();
@@ -51,7 +58,7 @@ namespace UI.Wallet
 
         private void NewFeatures()
         {
-            _priceText.text = improvingBarWallet.GettingPriceWeapon(improvingBarWallet.Lvl.Value+1).ToString();
+            _priceText.text = "<sprite=0>" +improvingBarWallet.GettingPriceWeapon(improvingBarWallet.Lvl.Value+1).ToString();
             _newspeed.text = (Mathf.Round(improvingBarWallet.GettingMiningSpeedWeapon(improvingBarWallet.Lvl.Value+1) * 100f) / 100f).ToString();
             _newvolume.text = improvingBarWallet.GettingCapacityWeapon(improvingBarWallet.Lvl.Value+1).ToString();
         }

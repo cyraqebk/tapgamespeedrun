@@ -4,6 +4,7 @@ using Core.Setting;
 using TMPro;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UI.Animation;
 
 namespace UI.Setting
 {
@@ -13,9 +14,12 @@ namespace UI.Setting
         [SerializeField] private Settings settings; // Ссылка на настройки
         [SerializeField] private TMP_Text vibration; // Текст для отображения состояния вибрации
         [SerializeField] private ControlMenu controlMenu; // Ссылка на класс управления меню
+        [SerializeField] private AnimationButton animationButton;
+        private Vector3 originalScale;
 
         private void Start() 
         {
+            originalScale = transform.localScale;
             UpdateVibrationText(); // Обновляем текст при старте
             LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged; // Подписка на изменения языка
         }
@@ -45,6 +49,7 @@ namespace UI.Setting
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             controlMenu.ControlVbr(); // Переключаем состояние вибрации
             UpdateVibrationText(); // Обновляем текст после изменения
         }

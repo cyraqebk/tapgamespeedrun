@@ -1,6 +1,7 @@
 using UnityEngine;
 using Core.Json;
 using System;
+using System.Collections;
 
 public class GameInitializer : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameInitializer : MonoBehaviour
     {
         // Загрузка данных при старте игры
         Memory.LoadFromFile();
+        StartCoroutine(SaveGameEvery15Seconds());
     }
 
     public void SubscribeToStopGame(Action handler)
@@ -27,6 +29,7 @@ public class GameInitializer : MonoBehaviour
     {
         if (pauseStatus)
         {
+            Debug.Log("Сохранение сработало", this);
             SaveGame();
         }
     }
@@ -49,7 +52,16 @@ public class GameInitializer : MonoBehaviour
     // Метод для вызова сохранения данных
     private void SaveGame()
     {
+        Debug.Log("Save");
         StopGame?.Invoke(); // Вызов события сохранения данных у всех подписчиков
         Memory.SaveToFile(); // Централизованное сохранение в файл
+    }
+    private IEnumerator SaveGameEvery15Seconds()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15); // Ожидание 15 секунд
+            SaveGame(); // Сохранение данных
+        }
     }
 }

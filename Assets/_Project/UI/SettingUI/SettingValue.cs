@@ -4,6 +4,7 @@ using Core.Setting;
 using TMPro;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UI.Animation;
 
 namespace UI.Setting
 {
@@ -12,9 +13,12 @@ namespace UI.Setting
         [SerializeField] private Settings settings; // Ссылка на настройки
         [SerializeField] private TMP_Text value; // Текст для отображения состояния звука
         [SerializeField] private ControlMenu controlMenu; // Ссылка на класс управления меню
+        [SerializeField] private AnimationButton animationButton;
+        private Vector3 originalScale;
 
         private void Start() 
         {
+            originalScale = transform.localScale;
             UpdateValueText(); // Обновляем текст при старте
             LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged; // Подписка на изменения языка
         }
@@ -44,6 +48,7 @@ namespace UI.Setting
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             controlMenu.ControlsSound(); // Переключаем состояние звука
             UpdateValueText(); // Обновляем текст после изменения
         }

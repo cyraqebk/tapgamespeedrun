@@ -19,7 +19,6 @@ namespace Core.Setting
         {
             currentLocale = LocalizationSettings.SelectedLocale?.Identifier.Code ?? "ru";
             settings.vbr = SaveManager.Load("vbr", false);
-            settings.sound = SaveManager.Load("sound", false);
             loge.Value = SaveManager.Load("loge", false);
             Debug.Log(" звук " + settings.sound + " язык " + loge.Value + " Вибрация " + settings.vbr);
 

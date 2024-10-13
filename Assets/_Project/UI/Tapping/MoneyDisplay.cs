@@ -12,7 +12,7 @@ namespace UI.Tappings
         private void OnEnable()
         {
             softCurrency.CurrencyField.Changed += CurrencyText;
-            moneyText.text = softCurrency.CurrencyField.Value.ToString();
+            moneyText.text = "<sprite=0> " + softCurrency.CurrencyField.Value.ToString();
         }
 
         private void OnDisable()
@@ -20,9 +20,9 @@ namespace UI.Tappings
             softCurrency.CurrencyField.Changed -= CurrencyText;
         }
 
-        private void CurrencyText(int oldValue, int newValue)
+        private void CurrencyText(long oldValue, long newValue)
         {
-            moneyText.text = newValue.ToString();
+            moneyText.text = "<sprite=0> " + newValue.ToString();
         }
     }
 }

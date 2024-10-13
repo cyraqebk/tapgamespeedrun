@@ -14,7 +14,7 @@ namespace Core.Setting
         private void Start()
         {
             // Загрузка состояния звука из сохранений
-            sound = SaveManager.Load("sound", true);
+            sound = SaveManager.Load("sound", false);
 
             if (sound)
             {
@@ -32,6 +32,7 @@ namespace Core.Setting
         // Отключение звука
         public void MuteSound()
         {
+            Debug.Log("выключил звук");
             AudioListener.volume = 0; // Отключаем звук
             sound = false; // Фиксируем состояние звука
             SaveManager.Save("sound", sound); // Сохраняем состояние
@@ -40,6 +41,7 @@ namespace Core.Setting
         // Включение звука
         public void UnmuteSound()
         {
+            Debug.Log("Включил звук");
             AudioListener.volume = 1; // Включаем звук
             sound = true; // Фиксируем состояние звука
             SaveManager.Save("sound", sound); // Сохраняем состояние
@@ -50,6 +52,7 @@ namespace Core.Setting
         {
             if (vbr)
             {
+                Debug.Log("Сработала вибрация");
                 StartCoroutine(VibrateForDuration(0.1f)); // Запускаем вибрацию
             }
         }

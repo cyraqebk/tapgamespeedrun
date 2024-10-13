@@ -14,7 +14,7 @@ namespace UI.Tappings
         private void OnEnable()
         {
             levelUpgrade.CurrenLevel.Changed += OnPriceChanged;
-            priceText.text = levelUpgrade.GetThePrice().ToString();
+            priceText.text = "<sprite=0>" + levelUpgrade.GetThePrice().ToString();
             lvl.text = levelUpgrade.CurrenLevel.Value.ToString();
             bonus.text = (levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value+1) - levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value)).ToString();
         }
@@ -26,7 +26,7 @@ namespace UI.Tappings
 
         private void OnPriceChanged(int oldValue, int newValue)
         {
-            priceText.text = levelUpgrade.GetThePrice().ToString();
+            priceText.text = "<sprite=0>" + levelUpgrade.GetThePrice().ToString();
             lvl.text = levelUpgrade.CurrenLevel.Value.ToString();
             bonus.text = (levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value+1) - levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value)).ToString();
         }

@@ -8,6 +8,7 @@ using UnityEngine.Localization.Settings;
 using TMPro;
 using Core.Json;
 using System.Collections;
+using Core.Setting;
 
 namespace Core.Wallet
 {
@@ -15,6 +16,7 @@ namespace Core.Wallet
     {
         [SerializeField] private GameInitializer gameInitializer;
         [SerializeField] private SoftCurrency softCurrency;
+        [SerializeField] private Settings settings;
         [SerializeField] private AnimationCurve _miningSpeedWeapon;
         [SerializeField] private AnimationCurve _CapacityWeapon;
         [SerializeField] private AnimationCurve _priceWeapon;
@@ -45,7 +47,25 @@ namespace Core.Wallet
             }
 
         }
-
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (!pauseStatus)
+            {
+                startTime = SaveManager.Load("_timeWallet", DateTime.Now);
+                endTime = DateTime.Now;
+                TimeSpan timeDifference = endTime - startTime;
+                double seconds = timeDifference.TotalSeconds;
+                if (passiveIncome.PassivImpruv((float)seconds * passiveIncome.MiningSpeed))
+                {
+                    passiveIncome._walletAmount.CurrencyIncrease((float)seconds * passiveIncome.MiningSpeed);
+                }
+                else
+                {
+                    passiveIncome._walletAmount.CurrencyIncrease(passiveIncome.MaximumValueWallet - passiveIncome._walletAmount.WalletField.Value);
+                }
+                Debug.Log("Приложение развернулось обратно.");
+            }
+        }
         private void OnDestroy()
         {
             if (gameInitializer != null)
@@ -83,6 +103,8 @@ namespace Core.Wallet
         {
             if (_lvl.Value < _maxLevelWeapon &&  GettingPriceWeapon(_lvl.Value+1) <= softCurrency.CurrencyField.Value)
             {
+                Debug.Log("Vibrrr");
+                settings.VibrationPulse();
                 _lvl.Value++;  
                 softCurrency.SubtractingValue(GettingPriceWeapon(_lvl.Value));
                 passiveIncome.GetMaximumVolume(GettingCapacityWeapon(_lvl.Value));

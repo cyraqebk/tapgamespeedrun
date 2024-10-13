@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -39,6 +38,7 @@ namespace Core.Json
                 saves = new Dictionary<string, string>();
             }
         }
+
         public static void ClearSaves()
         {
             saves.Clear();

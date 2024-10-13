@@ -112,7 +112,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1392506644254720
-    m_Localized: +
+    m_Localized: bonus +
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536638174519296
+    m_Localized: for the tap
     m_Metadata:
       m_Items: []
   references:
