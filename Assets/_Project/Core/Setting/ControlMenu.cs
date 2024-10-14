@@ -56,7 +56,17 @@ namespace Core.Setting
             {
                 settings.UnmuteSound();
             }
-            // Убедитесь, что здесь нет изменения состояния вибрации
+        }
+        public void ControlSound()
+        {
+            if (settings.sound2)
+            {
+                settings.OffSound();
+            }
+            else
+            {
+                settings.OnSound();
+            }
         }
         public void ControlVbr()
         {

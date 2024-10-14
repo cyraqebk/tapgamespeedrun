@@ -69,6 +69,7 @@ namespace UI.SettingUI
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            settings._button.PlayOneShot(settings._button.clip);
             controlMenu.Loge.Value = !controlMenu.Loge.Value; // Переключаем значение
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             UpdateValueText(); // Обновляем текст после изменения состояния

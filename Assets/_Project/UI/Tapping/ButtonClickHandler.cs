@@ -9,6 +9,7 @@ namespace UI.Tappings
 {
     public class ButtonClickHandler : MonoBehaviour, IPointerClickHandler
     {
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private SoftCurrency softCurrency;
         [SerializeField] private Settings settings;
         [SerializeField] private LevelUpgrade levelUpgrade;
@@ -24,21 +25,11 @@ namespace UI.Tappings
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            // Проверяем количество касаний перед обработкой нажатия
-            if (Input.touchCount <= 2) // Установлено на 2, чтобы избежать проблем
-            {
-                int addedValue = levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value);
-                softCurrency.CurrencyIncrease(addedValue);
-
-                // Показываем текст на месте клика
-                ShowFloatingText("+" + addedValue.ToString(), eventData.position);
-
-                StartCoroutine(AnimateButton());
-            }
-            else
-            {
-                Debug.LogWarning($"Ignored click event, current touch count: {Input.touchCount}.");
-            }
+            audioSource.PlayOneShot(audioSource.clip);
+            int addedValue = levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value);
+            softCurrency.CurrencyIncrease(addedValue);
+            ShowFloatingText("+" + addedValue.ToString(), eventData.position);
+            StartCoroutine(AnimateButton());
         }
 
         private void ShowFloatingText(string text, Vector3 clickPosition)

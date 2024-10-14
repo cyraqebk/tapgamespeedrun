@@ -111,6 +111,10 @@ MonoBehaviour:
     m_Key: For the tap
     m_Metadata:
       m_Items: []
+  - m_Id: 2546081168674816
+    m_Key: music
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

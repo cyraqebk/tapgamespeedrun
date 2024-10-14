@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UI.Animation;
 using UnityEngine.UI; // Не забудьте добавить эту директиву для работы с UI
+using Core.Setting;
 
 namespace Core.Management
 {
@@ -9,6 +10,7 @@ namespace Core.Management
     {
         [SerializeField] private StartGame startGame; // Ссылка на скрипт StartGame
         [SerializeField] private AnimationButton animationButton; // Ссылка на анимацию
+        [SerializeField] private Settings settings;
         private Vector3 originalScale;
 
         private void Start() 
@@ -18,6 +20,7 @@ namespace Core.Management
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            settings._button.PlayOneShot(settings._button.clip);
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
 
             // Вызываем методы Off и On для переключения канвасов и изменения цвета кнопок

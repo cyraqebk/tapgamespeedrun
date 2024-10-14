@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UI.Animation;
+using Core.Setting;
 
 namespace Core.Management
 {
     public class MiningButton : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private StartGame startGame;
+        [SerializeField] private Settings settings;
         [SerializeField] private AnimationButton animationButton;
         private Vector3 originalScale;
 
@@ -17,11 +19,7 @@ namespace Core.Management
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (startGame.miningCanvasGroup == null)
-            {
-                Debug.LogError("miningCanvasGroup is null");
-                return;
-            }
+            settings._button.PlayOneShot(settings._button.clip);
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             startGame.Off(startGame.walletCanvasGroup, startGame.walletButtonImage);
             startGame.Off(startGame.tappingCanvasGroup, startGame.tappingButtonImage);

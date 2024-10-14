@@ -102,12 +102,16 @@ namespace Core.Wallet
         {
             if (_lvl.Value < _maxLevelWeapon &&  GettingPriceWeapon(_lvl.Value+1) <= softCurrency.CurrencyField.Value)
             {
-                Debug.Log("Vibrrr");
+                settings._successfulPurchase.PlayOneShot(settings._successfulPurchase.clip);
                 settings.VibrationPulse();
                 _lvl.Value++;  
                 softCurrency.SubtractingValue(GettingPriceWeapon(_lvl.Value));
                 passiveIncome.GetMaximumVolume(GettingCapacityWeapon(_lvl.Value));
                 passiveIncome.GetSpeed(GettingMiningSpeedWeapon(_lvl.Value));
+            }
+            else
+            {
+                settings._unsuccessfulPurchase.PlayOneShot(settings._unsuccessfulPurchase.clip);
             }
         }
     }

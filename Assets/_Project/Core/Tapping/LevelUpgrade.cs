@@ -3,6 +3,7 @@ using Core.ReactiveFields;
 using Core.Json;
 using System.Collections;
 using Core.Setting;
+using UnityEngine.EventSystems;
 
 namespace Core.Tappings
 {
@@ -52,11 +53,16 @@ namespace Core.Tappings
         {
             if (_softCurrency.CurrencyField.Value >= GetThePrice())
             {
+                settings._successfulPurchase.PlayOneShot(settings._successfulPurchase.clip);
                 settings.VibrationPulse();
                 _softCurrency.SubtractingValue(GetThePrice());
                 _currenLevel.Value += 1;
                 _price = GetThePrice();
                 _speed = GetTheSpeed(_currenLevel.Value);
+            }
+            else
+            {
+                settings._unsuccessfulPurchase.PlayOneShot(settings._unsuccessfulPurchase.clip);
             }
         }
         

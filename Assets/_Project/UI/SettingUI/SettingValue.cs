@@ -48,6 +48,7 @@ namespace UI.Setting
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            settings._button.PlayOneShot(settings._button.clip);
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             controlMenu.ControlsSound(); // Переключаем состояние звука
             UpdateValueText(); // Обновляем текст после изменения

@@ -22,8 +22,6 @@ namespace UI.Tappings
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log("Button clicked");
-
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
             levelUpgrade.Improvement();
         }
