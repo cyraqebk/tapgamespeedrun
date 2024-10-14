@@ -24,7 +24,8 @@ namespace UI.Tappings
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (Input.touchCount <= 3)
+            // Проверяем количество касаний перед обработкой нажатия
+            if (Input.touchCount <= 2) // Установлено на 2, чтобы избежать проблем
             {
                 int addedValue = levelUpgrade.GetTheSpeed(levelUpgrade.CurrenLevel.Value);
                 softCurrency.CurrencyIncrease(addedValue);
@@ -33,6 +34,10 @@ namespace UI.Tappings
                 ShowFloatingText("+" + addedValue.ToString(), eventData.position);
 
                 StartCoroutine(AnimateButton());
+            }
+            else
+            {
+                Debug.LogWarning($"Ignored click event, current touch count: {Input.touchCount}.");
             }
         }
 

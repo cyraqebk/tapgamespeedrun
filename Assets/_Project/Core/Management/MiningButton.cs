@@ -23,11 +23,11 @@ namespace Core.Management
                 return;
             }
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
-            startGame.Off(startGame.walletCanvasGroup);
-            startGame.Off(startGame.tappingCanvasGroup);
-            startGame.Off(startGame.settingsCanvasGroup);
-            startGame.On(startGame.managementCanvasGroup);
-            startGame.On(startGame.miningCanvasGroup);
+            startGame.Off(startGame.walletCanvasGroup, startGame.walletButtonImage);
+            startGame.Off(startGame.tappingCanvasGroup, startGame.tappingButtonImage);
+            startGame.Off(startGame.settingsCanvasGroup, null);
+            startGame.On(startGame.managementCanvasGroup, null);
+            startGame.On(startGame.miningCanvasGroup, startGame.miningButtonImage);
         }
     }
 }

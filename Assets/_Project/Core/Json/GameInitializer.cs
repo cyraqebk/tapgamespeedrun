@@ -12,6 +12,7 @@ public class GameInitializer : MonoBehaviour
         // Загрузка данных при старте игры
         Memory.LoadFromFile();
         StartCoroutine(SaveGameEvery15Seconds());
+        Memory.CreateTestFile();
     }
 
     public void SubscribeToStopGame(Action handler)

@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UI.Animation;
+using UnityEngine.UI; // Не забудьте добавить эту директиву для работы с UI
 
 namespace Core.Management
 {
     public class TappingButton : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private StartGame startGame;
-        [SerializeField] private AnimationButton animationButton;
+        [SerializeField] private StartGame startGame; // Ссылка на скрипт StartGame
+        [SerializeField] private AnimationButton animationButton; // Ссылка на анимацию
         private Vector3 originalScale;
 
         private void Start() 
@@ -18,11 +19,13 @@ namespace Core.Management
         public void OnPointerClick(PointerEventData eventData)
         {
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
-            startGame.Off(startGame.walletCanvasGroup);
-            startGame.On(startGame.tappingCanvasGroup);
-            startGame.Off(startGame.settingsCanvasGroup);
-            startGame.On(startGame.managementCanvasGroup);
-            startGame.Off(startGame.miningCanvasGroup);
+
+            // Вызываем методы Off и On для переключения канвасов и изменения цвета кнопок
+            startGame.Off(startGame.walletCanvasGroup, startGame.walletButtonImage);
+            startGame.On(startGame.tappingCanvasGroup, startGame.tappingButtonImage);
+            startGame.Off(startGame.settingsCanvasGroup, null); // Если нет кнопки, можно передать null
+            startGame.On(startGame.managementCanvasGroup, null); // Или добавьте нужные ссылки
+            startGame.Off(startGame.miningCanvasGroup, startGame.miningButtonImage);
         }
     }
 }

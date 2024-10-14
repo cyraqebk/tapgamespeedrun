@@ -16,11 +16,11 @@ namespace Core.Management
         public void OnPointerClick(PointerEventData eventData)
         {
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
-            startGame.Off(startGame.walletCanvasGroup);
-            startGame.Off(startGame.tappingCanvasGroup);
-            startGame.On(startGame.settingsCanvasGroup);
-            startGame.Off(startGame.managementCanvasGroup);
-            startGame.Off(startGame.miningCanvasGroup);
+            startGame.Off(startGame.walletCanvasGroup, startGame.walletButtonImage);
+            startGame.Off(startGame.tappingCanvasGroup, startGame.tappingButtonImage);
+            startGame.On(startGame.settingsCanvasGroup, null);
+            startGame.Off(startGame.managementCanvasGroup, null);
+            startGame.Off(startGame.miningCanvasGroup, startGame.miningButtonImage);
         }
     }
 }

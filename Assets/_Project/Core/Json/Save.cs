@@ -13,14 +13,20 @@ namespace Core.Json
 
         public static void SaveToFile()
         {
-            string json = JsonConvert.SerializeObject(saves, Formatting.Indented);
-            File.WriteAllText(saveFilePath, json);
+            try
+            {
+                string json = JsonConvert.SerializeObject(saves, Formatting.Indented);
+                File.WriteAllText(saveFilePath, json);
+                Debug.Log($"[MEMORY]: Save file created at {saveFilePath}"); // Лог для проверки сохранения
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"[MEMORY]: Failed to save file: {e.Message}"); // Обработка ошибок
+            }
         }
 
         public static void LoadFromFile()
         {
-            Debug.Log($"[MEMORY]: Attempting to load save file from {saveFilePath}");
-            
             if (!File.Exists(saveFilePath))
             {
                 Debug.LogWarning($"[MEMORY]: Save file not found at {saveFilePath}. A new one will be created on save.");
@@ -31,7 +37,6 @@ namespace Core.Json
             try
             {
                 string json = File.ReadAllText(saveFilePath);
-                Debug.Log($"[MEMORY]: Raw save data: {json}");
                 saves = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
                 Debug.Log("[MEMORY]: Save data loaded successfully.");
             }
@@ -46,6 +51,21 @@ namespace Core.Json
         {
             saves.Clear();
             Debug.Log("[MEMORY]: Save data cleared.");
+        }
+
+        // Метод для создания тестового файла
+        public static void CreateTestFile()
+        {
+            string testFilePath = Application.persistentDataPath + "/testFile.txt";
+            try
+            {
+                File.WriteAllText(testFilePath, "This is a test file.");
+                Debug.Log($"[MEMORY]: Test file created at {testFilePath}"); // Лог для проверки создания тестового файла
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"[MEMORY]: Failed to create test file: {e.Message}"); // Обработка ошибок
+            }
         }
     }
 

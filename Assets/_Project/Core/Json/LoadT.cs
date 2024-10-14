@@ -60,5 +60,4 @@ namespace Core.Json
             return load.Data;
         }
     }
-
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UI.Animation;
+using UnityEngine.UI; // Добавлено для работы с компонентом Image
 
 namespace Core.Management
 {
@@ -18,11 +19,13 @@ namespace Core.Management
         public void OnPointerClick(PointerEventData eventData)
         {
             StartCoroutine(animationButton.AnimateButton(transform, originalScale));
-            startGame.On(startGame.walletCanvasGroup);
-            startGame.Off(startGame.tappingCanvasGroup);
-            startGame.Off(startGame.settingsCanvasGroup);
-            startGame.On(startGame.managementCanvasGroup);
-            startGame.Off(startGame.miningCanvasGroup);
+
+            // Обновление состояния канвасов и кнопок
+            startGame.On(startGame.walletCanvasGroup, startGame.walletButtonImage); // Активируем канвас кошелька и меняем цвет кнопки
+            startGame.Off(startGame.tappingCanvasGroup, startGame.tappingButtonImage); // Деактивируем канвас таппинга
+            startGame.Off(startGame.settingsCanvasGroup, null); // Деактивируем канвас настроек
+            startGame.On(startGame.managementCanvasGroup, null); // Активируем канвас управления
+            startGame.Off(startGame.miningCanvasGroup, startGame.miningButtonImage); // Деактивируем канвас майнинга
         }
     }
 }
