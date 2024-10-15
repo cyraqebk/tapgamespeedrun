@@ -21,7 +21,8 @@ namespace Core.Setting
         {
             // Загрузка состояния звука из сохранений
             sound = SaveManager.Load("sound", false);
-            sound2 = SaveManager.Load("sound2", true);
+            sound2 = SaveManager.Load("sound2", false);
+            Debug.Log("загрузил " + sound2);
 
             if (sound)
             {
@@ -39,8 +40,8 @@ namespace Core.Setting
                 EggSound.volume = 0.5f;
                 _successfulPurchase.volume = 0.5f;
                 _unsuccessfulPurchase.volume = 0.5f;
-                _collectingCoins.volume = 0.5f;
-                _button.volume = 0.5f;
+                _collectingCoins.volume = 0.1f;
+                _button.volume = 0.2f;
             }
             else
             {
@@ -73,10 +74,11 @@ namespace Core.Setting
             EggSound.volume = 0.5f;
             _successfulPurchase.volume = 0.5f;
             _unsuccessfulPurchase.volume = 0.5f;
-            _collectingCoins.volume = 0.5f;
-            _button.volume = 0.5f;
+            _collectingCoins.volume = 0.1f;
+            _button.volume = 0.2f;
             sound2 = true;
             SaveManager.Save("sound2", sound2);
+            Debug.Log("Сохранил " + sound2);
         }
 
         public void OffSound()
@@ -87,7 +89,8 @@ namespace Core.Setting
             _collectingCoins.volume = 0;
             _button.volume = 0;
             sound2 = false;
-            SaveManager.Save("sound2",sound2);
+            SaveManager.Save("sound2", sound2);
+            Debug.Log("Сохранил " + sound2);
         }
 
         // Вибрация на 0.1 секунды
@@ -95,7 +98,6 @@ namespace Core.Setting
         {
             if (vbr)
             {
-                Debug.Log("Сработала вибрация");
                 StartCoroutine(VibrateForDuration(0.1f)); // Запускаем вибрацию
             }
         }
@@ -103,9 +105,9 @@ namespace Core.Setting
         // Короутина для вибрации
         private IEnumerator VibrateForDuration(float duration)
         {
-#if UNITY_ANDROID && !UNITY_EDITOR
+            #if UNITY_ANDROID && !UNITY_EDITOR
             Handheld.Vibrate(); // Вибрация только на Android
-#endif
+            #endif
             yield return new WaitForSeconds(duration); // Ждём указанную продолжительность
         }
     }

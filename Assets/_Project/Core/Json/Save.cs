@@ -17,7 +17,6 @@ namespace Core.Json
             {
                 string json = JsonConvert.SerializeObject(saves, Formatting.Indented);
                 File.WriteAllText(saveFilePath, json);
-                Debug.Log($"[MEMORY]: Save file created at {saveFilePath}"); // Лог для проверки сохранения
             }
             catch (Exception e)
             {
@@ -60,7 +59,6 @@ namespace Core.Json
             try
             {
                 File.WriteAllText(testFilePath, "This is a test file.");
-                Debug.Log($"[MEMORY]: Test file created at {testFilePath}"); // Лог для проверки создания тестового файла
             }
             catch (Exception e)
             {
